@@ -225,6 +225,51 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &960825758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 960825760}
+  - component: {fileID: 960825759}
+  m_Layer: 0
+  m_Name: SceneSoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &960825759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960825758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f502b380a75be014ab04348a59a0eb5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneAmbient: {fileID: 8300000, guid: 5504690ea60af3441b019095fb778f3e, type: 3}
+--- !u!4 &960825760
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 960825758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5366692, y: 0.16137372, z: -8.331538}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1236923123
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +933,7 @@ MonoBehaviour:
   optionsPanel: {fileID: 1525576586}
   dialogueFileName: PoezdText
   returnButton: {fileID: 1478445448}
+  sceneTransitionButton: {fileID: 0}
 --- !u!4 &1900288823
 Transform:
   m_ObjectHideFlags: 0
@@ -1240,3 +1286,4 @@ SceneRoots:
   - {fileID: 1900288823}
   - {fileID: 737609325}
   - {fileID: 1402737112}
+  - {fileID: 960825760}

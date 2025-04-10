@@ -3,88 +3,233 @@
   "nodes": [
     {
       "id": "node1",
-      "text": "Mail \nПример первого диалогвого текста",
+      "text": "Что здесь делает почтовый ящик, да еще и на столбе",
       "options": [
         {
-          "text": "Выбор 1",
+          "text": "Посмотреть внутрь",
           "targetNode": "node2",
-          "activateReturnButton": true
+          "flagOperations": [{"flagName": "checkedMail", "newState": true}]
         },
         {
-          "text": "Выбор 2",
+          "text": "Осмотреть столб",
           "targetNode": "node3",
-          "activateReturnButton": true,
-          "flagOperations": [
-            {"flagName": "hasFirst", "newState": true}
-          ]
+          "flagOperations": [{"flagName": "checkedMailPole", "newState": true}]
         },
         {
-          "text": "Выбор 3",
+          "text": "Уйти",
           "activateReturnButton": true,
-          "sound": "bell",
-          "targetNode": "node5"
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node2",
-      "text": "Текст выбора 1",
+      "text": "Ящик выглядит пустым, но почему-то не видно заднюю стенку,.. \n...абсолютная тьма",
       "options": [
         {
-          "text": "Конец ветки выбора 1"
+          "text": "Засунуть руку",
+          "targetNode": "node4"
         },
         {
-          "text": "Прочитать",
-          "targetNode": "node6",
-          "conditions": [{"flagName": "hasFirst", "requiredState": true}]
-        }
-      ]
-    },
-    {
-      "id": "node3",
-      "text": "Текст выбора 2",
-      "options": [
-        {
-          "text": "Спросить о палатке",
-          "targetNode": "node7",
-          "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
+          "text": "Не рисковать",
+          "targetNode": "node5"
         },
         {
-          "text": "Схватить полено",
-          "targetNode": "node8",
-          "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
-        }
-      ]
-    },
-    {
-      "id": "node4",
-      "text": "Текст выбора 3",
-      "options": [
-        {
-          "text": "Копнуть землю",
-          "targetNode": "node9"
+          "text": "Осмотреть столб",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMailPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMailPole", "requiredState": false}]
         },
         {
-          "text": "Записать координаты",
-          "targetNode": "node10",
-          "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-          "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node5",
-      "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
+      "text": "Справившись с желанием узнать, что внутри, ты просто зависаешь на пару минут, осознавая происходящее",
       "options": [
         {
-          "text": "Идти в чащу",
-          "targetNode": "node28",
-          "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
+          "text": "Осмотреть столб",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMailPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMailPole", "requiredState": false}]
         },
         {
-          "text": "Вернуться к костру",
+          "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "node1"
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Твоя рука уходит в эту тьму почти по плечо, но в итоге ты касаешься стопки писем",
+      "options": [
+        {
+          "text": "Достать их",
+          "targetNode": "node6"
+        },
+        {
+          "text": "Оставить",
+          "targetNode": "node7"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Самый обычный столб, почти такой же, как и все, которые здесь стоят",
+      "options": [
+        {
+          "text": "Посмотреть внутрь",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedMail", "newState": true}],
+          "conditions": [{"flagName": "checkedMail", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "Дотсав руку из пустоты ящика, тот моментально захлопывается",
+      "options": [
+        {
+          "text": "Осмотреть столб",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMailPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMailPole", "requiredState": false}]
+        },
+        {
+          "text": "Отойти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Ты достаешь, на первый взгляд, обычные письма",
+      "options": [
+        {
+          "text": "Вскрыть",
+          "targetNode": "node8"
+        },
+        {
+          "text": "Изучить",
+          "targetNode": "node9"
+        },
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "targetNode": "nodeExit1",
+          "flagOperations": [{"flagName": "symbols4", "newState": true}],
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "Оставить и уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "На конверте стоит лишь дата: 15.06.2006. Но это же завтра... \n...откуда здесь они...",
+      "options": [
+        {
+          "text": "Вскрыть",
+          "targetNode": "node8"
+        },
+        {
+          "text": "Оставить и уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node8",
+      "text": "Ты читаешь первое письмо: \"Ты ищешь ответы, но найдешь лишь тьму. Каждое слово — это шаг к твоему падению.\"",
+      "options": [
+        {
+          "text": "Следующее",
+          "targetNode": "node10"
+        },
+        {
+          "text": "Положить в рюкзак",
+          "targetNode": "node11",
+          "flagOperations": [{"flagName": "tryedLetter", "newState": true}]
+        },
+        {
+          "text": "Оставить и уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node11",
+      "text": "Как только ты опускаешь письмо в рюкзак, оно исчезает",
+      "options": [
+        {
+          "text": "Открыть второе",
+          "targetNode": "node10"
+        },
+        {
+          "text": "Оставить и уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node10",
+      "text": "\"Ты ищешь ответы, но найдешь лишь тьму. Каждое слово — это шаг к твоему падению.\"",
+      "options": [
+        {
+          "text": "Дальше",
+          "targetNode": "node10"
+        },
+        {
+          "text": "Положить в рюкзак",
+          "targetNode": "node11",
+          "flagOperations": [{"flagName": "tryedLetter", "newState": true}],
+          "conditions": [{"flagName": "tryedLetter", "requiredState": false}]
+        },
+        {
+          "text": "Оставить и уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    },
+    {
+      "id": "nodeExit2",
+      "text": "Ты кладешь письма обратно в ящик, фотографию в рюкзак и отходишь"
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Письма, которые были у тебя в руке моментально пропадают",
+      "options": [
+        {
+          "text": "Осмотреть столб",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMailPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMailPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     }

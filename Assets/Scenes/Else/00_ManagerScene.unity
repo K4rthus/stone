@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 1323289827}
   - component: {fileID: 1323289830}
   - component: {fileID: 1323289829}
+  - component: {fileID: 1323289832}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -457,6 +458,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPlayerPosition: {x: -1.131, y: -0.498, z: 0}
   startSceneName: Field
+--- !u!114 &1323289832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323289826}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 068524d3079cc264f92a736bf814be7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonStates: []
 --- !u!1 &1381599866
 GameObject:
   m_ObjectHideFlags: 0

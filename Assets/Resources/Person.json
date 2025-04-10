@@ -1,0 +1,169 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "То ли человек, то ли тень стоит перед тобой",
+      "options": [
+        {
+          "text": "Окликнуть",
+          "targetNode": "node2",
+          "conditions": [{"flagName": "soulSold", "requiredState": false}]
+        },
+        {
+          "text": "Окликнуть",
+          "targetNode": "node5",
+          "conditions": [{"flagName": "soulSold", "requiredState": true}]
+        },
+        {
+          "text": "Пройти мимо",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "mnopq rst uvwxy",
+      "options": [
+        {
+          "text": "Что?",
+          "targetNode": "node3"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "hij klm nop",
+      "options": [
+        {
+          "text": "Еще раз",
+          "targetNode": "node4"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "asdf ghjklqwer tyuiopzxcv bnmasdf",
+      "options": [
+        {
+          "text": "ОК",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "\"Свет, что ты искал, стал твоим проклятием.\"",
+      "options": [
+        {
+          "text": "Что?",
+          "targetNode": "node6"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "\"Ты чувствуешт, как тьма окутывает тебя?\"",
+      "options": [
+        {
+          "text": "Что ты несешь?",
+          "targetNode": "node7"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "\"Я говорю о том, что ты не видишь. Тень, что следует за тобой, — это не просто страх.\"",
+      "options": [
+        {
+          "text": "Но я не чувствую страха.",
+          "targetNode": "node8"
+        }
+      ]
+    },
+    {
+      "id": "node8",
+      "text": "\"Страх может быть скрыт под маской уверенности. Ты не осознаешь, что потерял.\"",
+      "options": [
+        {
+          "text": "Что я потерял?",
+          "targetNode": "node9"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "\"Ты продал свою душу в обмен на что?, ты просто стал никем.\"",
+      "options": [
+        {
+          "text": "Нет, это не может быть правдой.",
+          "targetNode": "node10"
+        }
+      ]
+    },
+    {
+      "id": "node10",
+      "text": "\"Правда не всегда приятна.\"",
+      "options": [
+        {
+          "text": "А что случилось с тобой?",
+          "targetNode": "node11"
+        }
+      ]
+    },
+    {
+      "id": "node11",
+      "text": "\"Я стал..., нет, я всегда был... Я ничто.\"",
+      "options": [
+        {
+          "text": "Но ты же когда-то был человеком, значит можно как-то вернуться.",
+          "targetNode": "node12"
+        }
+      ]
+    },
+    {
+      "id": "node12",
+      "text": "\"Возвращение? Это лишь иллюзия. Я уже не знаю, что значит быть живым.\"",
+      "options": [
+        {
+          "text": "Но ты все еще здесь.",
+          "targetNode": "node13"
+        }
+      ]
+    },
+    {
+      "id": "node13",
+      "text": "\"Это не место, это состояние, этой дереани не существует, есди ты понимаешь меня, значит ты уже мертв\"",
+      "options": [
+        {
+          "text": "Это не может быть концом.",
+          "targetNode": "end"
+        }
+      ]
+    },
+    {
+      "id": "end",
+      "text": "\"Конец? Нет, это только начало ничего, ты остаешься здесь навсегда, как и я, как и все, кто когда-то говорил с ним.\""
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Ты кладешь фотку в рюкзак и стараясь не привлекать внимания, обходишь его"
+    },
+    {
+      "id": "nodeExit2",
+      "text": "Ни поняв ни слова, ты просто отмахиваешься от него и идешь дальше"
+    }
+  ]
+}

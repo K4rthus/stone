@@ -3,90 +3,129 @@
   "nodes": [
     {
       "id": "node1",
-      "text": "Pole \nПример первого диалогвого текста",
+      "text": "Вроде самые обычный столб, только что-то вырезано на нем",
       "options": [
         {
-          "text": "Выбор 1",
+          "text": "Осмотреть символы",
           "targetNode": "node2",
-          "activateReturnButton": true
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}]
         },
         {
-          "text": "Выбор 2",
+          "text": "Осмотреть отметины",
           "targetNode": "node3",
-          "activateReturnButton": true,
-          "flagOperations": [
-            {"flagName": "hasFirst", "newState": true}
-          ]
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}]
         },
         {
-          "text": "Выбор 3",
+          "text": "Уйти",
           "activateReturnButton": true,
-          "sound": "bell",
-          "targetNode": "node5"
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node2",
-      "text": "Текст выбора 1",
+      "text": "\"С + К\", странно, имя того, кого ты ищешь ни с С, ни с К не начинается",
       "options": [
         {
-          "text": "Конец ветки выбора 1"
+          "text": "Осмотреть провод",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedWiresPole", "newState": true}],
+          "conditions": [{"flagName": "checkedWiresPole", "requiredState": false}]
         },
         {
-          "text": "Прочитать",
-          "targetNode": "node6",
-          "conditions": [{"flagName": "hasFirst", "requiredState": true}]
-        }
-      ]
-    },
-    {
-      "id": "node3",
-      "text": "Текст выбора 2",
-      "options": [
-        {
-          "text": "Спросить о палатке",
-          "targetNode": "node7",
-          "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
         },
         {
-          "text": "Схватить полено",
-          "targetNode": "node8",
-          "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node4",
-      "text": "Текст выбора 3",
+      "text": "Провода выглядят старыми, видимо из-за этого и порвались",
       "options": [
         {
-          "text": "Копнуть землю",
-          "targetNode": "node9"
+          "text": "Оглядеться",
+          "targetNode": "node5"
         },
         {
-          "text": "Записать координаты",
-          "targetNode": "node10",
-          "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-          "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node5",
-      "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
+      "text": "Не похоже, чтобы кто-то плнировал их чинить, да и вообще, по информации, здесь вообще никто не живет уже лет 100",
       "options": [
         {
-          "text": "Идти в чащу",
-          "targetNode": "node28",
-          "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
         },
         {
-          "text": "Вернуться к костру",
+          "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "node1"
+          "targetNode": "nodeExit"
         }
       ]
+    },
+    {
+      "id": "node3",
+      "text": "Они хоть и сильно напоминают следы когтей, но если присомтреться, то видно, что они сделаны простым ножом",
+      "options": [
+        {
+          "text": "Осмотреть символы",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}],
+          "conditions": [{"flagName": "checkedSymbolsPole", "requiredState": false}]
+        },
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "targetNode": "node6",
+          "flagOperations": [{"flagName": "symbols2", "newState": true}],
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Неизвестно откуда появившееся желание произнести, ранее увиденные руны, тут же пропадает, а на душе становиться спокойнее",
+      "options": [
+        {
+          "text": "Осмотреть символы",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}],
+          "conditions": [{"flagName": "checkedSymbolsPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
     }
   ]
 }

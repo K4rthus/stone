@@ -17,7 +17,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private AudioClip buttonClickSound;
 
     public bool IsPaused { get; private set; }
-    public static event System.Action<bool> OnPauseStateChanged;
+    public static event System.Action<bool> OnPauseStateChanged = delegate { };
 
     private void Start()
     {
@@ -42,7 +42,10 @@ public class PauseMenuManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            TogglePause();
+            if (!AutoInteractionController.IsActive) 
+            {
+                TogglePause();
+            }
         }
     }
 

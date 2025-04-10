@@ -1,92 +1,188 @@
 {
-    "startNode": "node1",
-    "nodes": [
-      {
-        "id": "node1",
-        "text": "PoezdText \nПример первого диалогвого текста",
-        "options": [
-          {
-            "text": "Выбор 1",
-            "targetNode": "node2",
-            "activateReturnButton": true
-          },
-          {
-            "text": "Выбор 2",
-            "targetNode": "node3",
-            "activateReturnButton": true,
-            "flagOperations": [
-              {"flagName": "hasFirst", "newState": true}
-            ]
-          },
-          {
-            "text": "Выбор 3",
-            "activateReturnButton": true,
-            "sound": "bell",
-            "targetNode": "node5"
-          }
-        ]
-      },
-      {
-        "id": "node2",
-        "text": "Текст выбора 1",
-        "options": [
-          {
-            "text": "Конец ветки выбора 1"
-          },
-          {
-            "text": "Прочитать",
-            "targetNode": "node6",
-            "conditions": [{"flagName": "hasFirst", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node3",
-        "text": "Текст выбора 2",
-        "options": [
-          {
-            "text": "Спросить о палатке",
-            "targetNode": "node7",
-            "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
-          },
-          {
-            "text": "Схватить полено",
-            "targetNode": "node8",
-            "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node4",
-        "text": "Текст выбора 3",
-        "options": [
-          {
-            "text": "Копнуть землю",
-            "targetNode": "node9"
-          },
-          {
-            "text": "Записать координаты",
-            "targetNode": "node10",
-            "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-            "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node5",
-        "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
-        "options": [
-          {
-            "text": "Идти в чащу",
-            "targetNode": "node28",
-            "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-          },
-          {
-            "text": "Вернуться к костру",
-            "activateReturnButton": true,
-            "targetNode": "node1"
-          }
-        ]
-      }
-    ]
-  }
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "В отличии от остальных, эта надпись сделана не на русском",
+      "options": [
+        {
+          "text": "Разобраться с надписью",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedTextTrain", "newState": true}]
+        },
+        {
+          "text": "Осмотреть остальные",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Все, что ты вспоминаешь, это memento - помни, но здесь явно что-то не так",
+      "options": [
+        {
+          "text": "Посмотреть в переводчике",
+          "targetNode": "node5",
+          "conditions": [{"flagName": "knowSymbols", "requiredState": false}]
+        },
+        {
+          "text": "Посмотреть в переводчике",
+          "targetNode": "node6",
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "Осмотреть остальные",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedOtherTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "На телефоне нет сети, а переводчик не определяет этот язык",
+      "options": [
+        {
+          "text": "Осмотреть остальные",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedOtherTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "На телефоне нет сети, а переводчик не определяет этот язык, но душа просит сказать ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+      "options": [
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "targetNode": "node7",
+          "flagOperations": [{"flagName": "symbols3", "newState": true}]
+        },
+        {
+          "text": "Осмотреть остальные",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedOtherTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "Каждый раз, произнося эти символы, ты будто становишься ближе к богу",
+      "options": [
+        {
+          "text": "Осмотреть остальные",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedOtherTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Остальные надписи это просто информация о вагоне",
+      "options": [
+        {
+          "text": "Разобраться с надписью",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть вагон",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Он похоже здесь стоит уже много лет, весь проржавел и похоже он больше никуда не поедет",
+      "options": [
+        {
+          "text": "Разобраться с фразой",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть надписи",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}],
+          "conditions": [{"flagName": "checkedOtherTextTrain", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}
