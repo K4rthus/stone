@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private Animator animator;
+    [SerializeField] public float moveSpeed = 1.1f; 
+    [SerializeField] private Animator animator; 
     [SerializeField] private float minXBoundary;
 
     [Header("Walking sound")]
@@ -69,11 +70,14 @@ public class PlayerMovement : MonoBehaviour
         bool wasMoving = isMoving;
         isMoving = speed > 0.1f;
 
-        if (isMoving && !wasMoving)
+        if (isMoving)
         {
-            SoundManager.Instance.PlaySFX(footstepSound);
+            if (!wasMoving || !SoundManager.Instance.sfxSource.isPlaying)
+            {
+                SoundManager.Instance.PlaySFX(footstepSound);
+            }
         }
-        else if (!isMoving && wasMoving)
+        else if (wasMoving)
         {
             SoundManager.Instance.sfxSource.Stop();
         }
@@ -113,6 +117,35 @@ public class PlayerMovement : MonoBehaviour
             interactable == currentInteractable)
         {
             currentInteractable = null;
+        }
+    }
+
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SoundManager.Instance.sfxSource.Stop();
+        isMoving = false;
+        animator.SetFloat("Speed", 0f);
+    }
+
+    public void SetControl(bool enabled)
+    {
+        this.enabled = enabled;
+
+        if (!enabled)
+        {
+            SoundManager.Instance.sfxSource.Stop();
+            isMoving = false;
+            animator.SetFloat("Speed", 0f);
         }
     }
 }

@@ -46,6 +46,8 @@ public class Interactable : MonoBehaviour
 
     private IEnumerator PlayAnimationAndLoadScene()
     {
+        SoundManager.Instance.sfxSource.Stop();
+
         if (animator != null && animator.runtimeAnimatorController != null)
         {
             animator.SetTrigger("Flash");
