@@ -8,30 +8,43 @@
         {
           "text": "Осмотреть их",
           "targetNode": "node2",
-          "flagOperations": [{"flagName": "checkedTreeMarks", "newState": true}],
+          "flagOperations": 
+          [
+            {"flagName": "checkedTreeMarks", "newState": true},
+            {"flagName": "Marks", "newState": true}
+          ],
           "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
         },
         {
           "text": "Осмотреть их",
           "targetNode": "node3",
-          "flagOperations": [{"flagName": "checkedTreeMarks", "newState": true}],
+          "flagOperations": 
+          [
+            {"flagName": "checkedTreeMarks", "newState": true},
+            {"flagName": "Marks", "newState": true}
+          ],
           "conditions": [{"flagName": "checkedMarksPole", "requiredState": true}]
         },
         {
           "text": "Оглядеться",
           "targetNode": "node4",
-          "flagOperations": [{"flagName": "checkedMarksSurrounding", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedMarksSurrounding", "newState": true},
+            {"flagName": "Marks", "newState": true}
+          ]
         },
         {
           "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "nodeExit"
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "Marks", "newState": true}]
         }
       ]
     },
     {
       "id": "node2",
-      "text": "Достаточно глубокие следы, чьих-то огромных когтей",
+      "text": "Достаточно глубокие следы чьих-то огромных когтей",
       "options": [
         {
           "text": "Оглядеться",
@@ -48,7 +61,7 @@
     },
     {
       "id": "node3",
-      "text": "А вот это уже явно настоящий монстр оставил, в отличии от тех, которые были на столбе",
+      "text": "А вот это уже явно настоящий монстр оставил, в отличие от тех, что были на столбе",
       "options": [
         {
           "text": "Оглядеться",

@@ -65,7 +65,7 @@
       ]
     },
     {
-      "id": "node2",
+      "id": "node4",
       "text": "Твоя рука уходит в эту тьму почти по плечо, но в итоге ты касаешься стопки писем",
       "options": [
         {
@@ -97,7 +97,7 @@
     },
     {
       "id": "node7",
-      "text": "Дотсав руку из пустоты ящика, тот моментально захлопывается",
+      "text": "Достав руку из пустоты ящика, тот моментально захлопывается",
       "options": [
         {
           "text": "Осмотреть столб",
@@ -126,6 +126,7 @@
         },
         {
           "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "sound": "noMail",
           "targetNode": "nodeExit1",
           "flagOperations": [{"flagName": "symbols4", "newState": true}],
           "conditions": [{"flagName": "knowSymbols", "requiredState": true}]

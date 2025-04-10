@@ -14,6 +14,9 @@ public class MonsterController : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float delayBeforeMenu = 2f;
     [SerializeField] private float fadeDuration = 2f;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip runningSound;
     [SerializeField] private AudioClip gameOverSound;
 
     [Header("Player Speed Settings")]
@@ -68,6 +71,11 @@ public class MonsterController : MonoBehaviour
         {
             animator.SetBool("IsRunning", true);
         }
+
+        if (runningSound != null)
+        {
+            SoundManager.Instance.PlayLoopingSFX(runningSound);
+        }
     }
 
     private IEnumerator ResetSpeed(PlayerMovement playerMovement)
@@ -98,6 +106,8 @@ public class MonsterController : MonoBehaviour
         }
 
         gameOverCanvas.SetActive(true);
+
+        SoundManager.Instance.StopLoopingSFX();
 
         yield return StartCoroutine(FadeToBlack());
 
@@ -164,5 +174,7 @@ public class MonsterController : MonoBehaviour
         {
             animator.SetBool("IsRunning", false);
         }
+
+        SoundManager.Instance.StopLoopingSFX();
     }
 }

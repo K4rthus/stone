@@ -3,27 +3,39 @@
   "nodes": [
     {
       "id": "node1",
-      "text": "В отличии от остальных, эта надпись сделана не на русском",
+      "text": "В отличие от остальных, эта надпись сделана не на русском",
       "options": [
         {
           "text": "Разобраться с надписью",
           "targetNode": "node2",
-          "flagOperations": [{"flagName": "checkedTextTrain", "newState": true}]
+          "flagOperations": [
+            {"flagName": "checkedTextTrain", "newState": true},
+            {"flagName": "PoezdText", "newState": true}
+          ]
         },
         {
           "text": "Осмотреть остальные",
           "targetNode": "node3",
-          "flagOperations": [{"flagName": "checkedOtherTextTrain", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedOtherTextTrain", "newState": true},
+            {"flagName": "PoezdText", "newState": true}
+          ]
         },
         {
           "text": "Осмотреть вагон",
           "targetNode": "node4",
-          "flagOperations": [{"flagName": "checkedTrain", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedTrain", "newState": true},
+            {"flagName": "PoezdText", "newState": true}
+          ]
         },
         {
           "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "nodeExit"
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "PoezdText", "newState": true}]
         }
       ]
     },
@@ -159,7 +171,7 @@
     },
     {
       "id": "node4",
-      "text": "Он похоже здесь стоит уже много лет, весь проржавел и похоже он больше никуда не поедет",
+      "text": "Он похоже здесь стоит уже много лет, весь проржавел и судя по всему он больше никуда не поедет",
       "options": [
         {
           "text": "Разобраться с фразой",

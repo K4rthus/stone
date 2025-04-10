@@ -7,6 +7,7 @@ public class SoundManager : MonoBehaviour
     [Header("Audio Sources")]
     public AudioSource ambientSource;
     public AudioSource sfxSource;
+    public AudioSource loopingSource;
     public AudioSource uiSource;
 
     void Awake()
@@ -38,6 +39,7 @@ public class SoundManager : MonoBehaviour
     {
         ambientSource.volume = volume;
         sfxSource.volume = volume;
+        loopingSource.volume = volume;
         uiSource.volume = volume;
     }
 
@@ -58,10 +60,24 @@ public class SoundManager : MonoBehaviour
         uiSource.PlayOneShot(clip);
     }
 
+    public void PlayLoopingSFX(AudioClip clip)
+    {
+        if (loopingSource.isPlaying) loopingSource.Stop();
+        loopingSource.clip = clip;
+        loopingSource.loop = true;
+        loopingSource.Play();
+    }
+
+    public void StopLoopingSFX()
+    {
+        loopingSource.Stop();
+    }
+
     public void StopAllSounds()
     {
         ambientSource.Stop();
         sfxSource.Stop();
+        loopingSource.Stop();
         uiSource.Stop();
     }
 
@@ -69,6 +85,7 @@ public class SoundManager : MonoBehaviour
     {
         ambientSource.Pause();
         sfxSource.Pause();
+        loopingSource.Pause();
         uiSource.Pause();
     }
 
@@ -76,6 +93,7 @@ public class SoundManager : MonoBehaviour
     {
         ambientSource.UnPause();
         sfxSource.UnPause();
+        loopingSource.UnPause();
         uiSource.UnPause();
     }
 

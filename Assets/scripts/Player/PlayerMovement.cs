@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float moveSpeed = 1.1f; 
     [SerializeField] private Animator animator; 
     [SerializeField] private float minXBoundary;
+    [SerializeField] private float maxXBoundary = 12.9f;
 
     [Header("Walking sound")]
     [SerializeField] private AudioClip footstepSound;
@@ -64,6 +65,14 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
 
+        if (transform.position.x > maxXBoundary)
+        {
+            Vector3 newPos = transform.position;
+            newPos.x = maxXBoundary;
+            transform.position = newPos;
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
+        }
+
         float speed = Mathf.Abs(horizontal);
         animator.SetFloat("Speed", speed);
 
@@ -100,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        SoundManager.Instance.StopLoopingSFX();
+
         currentInteractable.TriggerInteraction();
     }
 

@@ -97,7 +97,7 @@
     },
     {
       "id": "node10",
-      "text": "Они релаьно похожи, только новый - какой-то помятый",
+      "text": "Они реально похожи, только новый - какой-то помятый",
       "options": [
         {
           "text": "Забрать оба",
@@ -125,6 +125,7 @@
         {
           "text": "Забрать звонок",
           "targetNode": "nodeExit3",
+          "activateReturnButton": true,
           "flagOperations": [{"flagName": "hasDarkBell", "newState": true}]
         },
         {
@@ -140,6 +141,7 @@
       "options": [
         {
           "text": "Забрать звонок",
+          "activateReturnButton": true,
           "targetNode": "nodeExit3",
           "flagOperations": [{"flagName": "hasDarkBell", "newState": true}]
         },
@@ -199,7 +201,7 @@
     },
     {
       "id": "nodeExit1",
-      "text": "Положив оба звонка на что-то похожее на дерево, ты кладешь фотку в рюкзак и отходишь"
+      "text": "Положив оба звонка на что-то похожее на дерево, ты кладешь снимок в рюкзак и отходишь"
     },
     {
       "id": "nodeExit2",

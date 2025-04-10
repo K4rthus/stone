@@ -8,17 +8,20 @@
         {
           "text": "Окликнуть",
           "targetNode": "node2",
+          "flagOperations": [{"flagName": "Person", "newState": true}],
           "conditions": [{"flagName": "soulSold", "requiredState": false}]
         },
         {
           "text": "Окликнуть",
           "targetNode": "node5",
+          "flagOperations": [{"flagName": "Person", "newState": true}],
           "conditions": [{"flagName": "soulSold", "requiredState": true}]
         },
         {
           "text": "Пройти мимо",
           "activateReturnButton": true,
-          "targetNode": "nodeExit1"
+          "targetNode": "nodeExit1",
+          "flagOperations": [{"flagName": "Person", "newState": true}]
         }
       ]
     },
@@ -88,7 +91,7 @@
       "text": "\"Я говорю о том, что ты не видишь. Тень, что следует за тобой, — это не просто страх.\"",
       "options": [
         {
-          "text": "Но я не чувствую страха.",
+          "text": "Какой страх?",
           "targetNode": "node8"
         }
       ]
@@ -108,7 +111,7 @@
       "text": "\"Ты продал свою душу в обмен на что?, ты просто стал никем.\"",
       "options": [
         {
-          "text": "Нет, это не может быть правдой.",
+          "text": "Нет, это не правда.",
           "targetNode": "node10"
         }
       ]
@@ -118,7 +121,7 @@
       "text": "\"Правда не всегда приятна.\"",
       "options": [
         {
-          "text": "А что случилось с тобой?",
+          "text": "А ты кто?",
           "targetNode": "node11"
         }
       ]
@@ -128,7 +131,7 @@
       "text": "\"Я стал..., нет, я всегда был... Я ничто.\"",
       "options": [
         {
-          "text": "Но ты же когда-то был человеком, значит можно как-то вернуться.",
+          "text": "А вернуться?",
           "targetNode": "node12"
         }
       ]
@@ -145,10 +148,11 @@
     },
     {
       "id": "node13",
-      "text": "\"Это не место, это состояние, этой дереани не существует, есди ты понимаешь меня, значит ты уже мертв\"",
+      "text": "\"Это не место, это состояние, этой деревни не существует, если ты понимаешь меня, значит ты уже мертв\"",
       "options": [
         {
           "text": "Это не может быть концом.",
+          "activateSceneTransition": true,
           "targetNode": "end"
         }
       ]

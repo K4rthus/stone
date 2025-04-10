@@ -7,6 +7,7 @@
       "options": [
         {
           "text": "?",
+          "sound": "demon",
           "targetNode": "node2",
           "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
         },

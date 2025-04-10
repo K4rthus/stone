@@ -8,17 +8,26 @@
         {
           "text": "Осмотреть их",
           "targetNode": "node2",
-          "flagOperations": [{"flagName": "checkedSleepingBags", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedSleepingBags", "newState": true},
+            {"flagName": "Tent", "newState": true}
+          ]
         },
         {
           "text": "Осмотреть палатку",
           "targetNode": "node3",
-          "flagOperations": [{"flagName": "checkedTent", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedTent", "newState": true},
+            {"flagName": "Tent", "newState": true}
+          ]
         },
         {
           "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "nodeExit"
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "Tent", "newState": true}]
         }
       ]
     },
@@ -41,7 +50,7 @@
     },
     {
       "id": "node3",
-      "text": "Кроме мешком в ней ничего больше нет",
+      "text": "Кроме мешков в ней ничего больше нет",
       "options": [
         {
           "text": "Осмотреться еще",
@@ -64,7 +73,7 @@
     },
     {
       "id": "node4",
-      "text": "Сколько бы раз ты не перепроверял все, в палатке лишь мешки, но почему их не забрали?..",
+      "text": "Сколько бы раз ты ни перепроверял все, в палатке лишь мешки, но почему их не забрали?..",
       "options": [
         {
           "text": "Осмотреть их",

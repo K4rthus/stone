@@ -1,0 +1,45 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Проверим-ка фотографии",
+      "options": [
+        {
+          "text": "Вот",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit",
+          "conditions": 
+          [
+            {"flagName": "Camp", "requiredState": true},
+            {"flagName": "PoezdText", "requiredState": true},
+            {"flagName": "Tent", "requiredState": true},
+            {"flagName": "Marks", "requiredState": true},
+            {"flagName": "Person", "requiredState": true}
+          ]
+        },
+        {
+          "text": "Какие фотографии?",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit1",
+          "conditions": 
+          [
+            {"flagName": "Camp", "requiredState": false},
+            {"flagName": "PoezdText", "requiredState": false},
+            {"flagName": "Tent", "requiredState": false},
+            {"flagName": "Marks", "requiredState": false},
+            {"flagName": "Person", "requiredState": false}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Конверт с фотографиями падает на лакированный стол. \"Вы справились\", — говорит Он, не поднимая глаз. Его охранник отдает вам толстый конверт с деньгами.\nНо когда вы выходите в ночной город, фонари отбрасывают странные тени. На рекламном билборде мелькает знакомый силуэт. В лужу падает клочок бумаги: \"Тебя не отпустят\" на обороте вашей собственной фотографии."
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Пустой рюкзак падает к Его ногам. Вы пытаетесь объяснить, что лес глотал снимки как болото — вспышка за вспышкой, кадр за кадром, пока в объективе не остались лишь пятна сырого мрака. \"Без доказательств — ты доказательство\", — говорит Он, поправляя галстук. В подвале, куда вас бросают, на стене висит календарь. Все листы отмечены *15.06.2006*. На полу — кеды со следами лесной грязи. Вы узнаёте их."
+    }
+  ]
+}

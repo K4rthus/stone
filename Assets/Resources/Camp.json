@@ -8,17 +8,26 @@
         {
           "text": "Покопаться в костре",
           "targetNode": "node2",
-          "flagOperations": [{"flagName": "checkedCampfire", "newState": true}]
+          "flagOperations": 
+          [
+            {"flagName": "checkedCampfire", "newState": true},
+            {"flagName": "Camp", "newState": true}
+          ]
         },
         {
           "text": "Осмотреть окружение",
           "targetNode": "node3",
-          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}]
+          "flagOperations": [
+            {"flagName": "checkCampfireSurrounding", "newState": true},
+            {"flagName": "Camp", "newState": true}
+          ]
         },
         {
           "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "nodeExit"
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "Camp", "newState": true}]
+          
         }
       ]
     },
@@ -67,7 +76,7 @@
     },
     {
       "id": "node5",
-      "text": "На той строне, которой камень лежал на земле есть какие-то отметины",
+      "text": "На той стороне, которой камень лежал на земле есть какие-то отметины",
       "options": [
         {
           "text": "Рассомтреть подробнее",
@@ -151,7 +160,7 @@
     },
     {
       "id": "node10",
-      "text": "Сказав \"ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ\", голос затихает, и как-то на душе легче становиться",
+      "text": "Сказав \"ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ\", голос затихает, и как-то на душе легче становится",
       "options": [
         {
           "text": "Осмотреть окружение",

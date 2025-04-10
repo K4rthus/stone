@@ -4,6 +4,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private float minXBoundary;
+    [SerializeField] private float maxXBoundary = 13f;
     private Vector3 _initialPosition;
     private Camera _camera;
     private float _cameraHalfWidth;
@@ -22,9 +23,10 @@ public class CameraFollow : MonoBehaviour
         if (_target == null) return;
 
         float cameraMinX = minXBoundary + _cameraHalfWidth;
+        float cameraMaxX = maxXBoundary - _cameraHalfWidth;
         float targetX = _target.position.x;
 
-        float clampedX = Mathf.Max(targetX, cameraMinX);
+        float clampedX = Mathf.Clamp(targetX, cameraMinX, cameraMaxX);
 
         transform.position = new Vector3(
             clampedX,

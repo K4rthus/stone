@@ -1364,7 +1364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aaff4f3090c15b46a81dbd98056adca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1.1
+  moveSpeed: 0.8
   animator: {fileID: 969126062}
   minXBoundary: -6.99
   footstepSound: {fileID: 8300000, guid: e7eae05d2545f564e971050e2d6bfd07, type: 3}
@@ -1460,7 +1460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetX: -3.8
-  moveSpeed: 1.1
+  moveSpeed: 0.8
   stoppingDistance: 0.1
   interactionTarget: {fileID: 2000007248}
   interactionDelay: 0.001

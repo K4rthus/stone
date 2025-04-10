@@ -452,7 +452,7 @@ MonoBehaviour:
   fadeDuration: 2
   volumeSlider: {fileID: 1240764129}
   buttonClickSound: {fileID: 8300000, guid: 1fbdad657b8168a44920e0aab7ee73ce, type: 3}
-  firstSceneName: Field
+  firstSceneName: Lor
 --- !u!4 &206603196
 Transform:
   m_ObjectHideFlags: 0
@@ -2293,6 +2293,7 @@ RectTransform:
   - {fileID: 284870392}
   - {fileID: 1916939226}
   - {fileID: 1240764130}
+  - {fileID: 1485824735}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2382,11 +2383,11 @@ Transform:
   m_GameObject: {fileID: 1485824733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 90}
-  m_LocalScale: {x: 1.2839508, y: 1.2839508, z: 1.2839508}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1468610788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1485824736
 Animator:
@@ -2543,10 +2544,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -3368039618260153014, guid: 3b1cf76d08bacdc43b4304744e5ab3f7, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -2943,8 +2944,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1083677277}
-  - {fileID: 1468610788}
   - {fileID: 889197365}
+  - {fileID: 1468610788}
   - {fileID: 206603196}
   - {fileID: 1325540113}
-  - {fileID: 1485824735}

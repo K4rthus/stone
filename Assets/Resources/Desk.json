@@ -40,7 +40,7 @@
         {
           "text": "Осмотреть окружение",
           "targetNode": "node4",
-          "flagOperations": [{"flagName": "checkedDesk", "newState": true}],
+          "flagOperations": [{"flagName": "checkSurrounding", "newState": true}],
           "conditions": [{"flagName": "checkSurrounding", "requiredState": false}]
         },
         {
@@ -75,7 +75,7 @@
     },
     {
       "id": "node4",
-      "text": "Оглядевшись, ты замечаешь недалеко какой-то камень воткнутый в землю",
+      "text": "Оглядевшись, ты замечаешь недалеко какой-то камень, воткнутый в землю",
       "options": [
         {
           "text": "Всмотреться в слова",
@@ -91,6 +91,7 @@
         },
         {
           "text": "Пойти к нему",
+          "activateReturnButton": true,
           "targetNode": "nodeExit"
         }
       ]

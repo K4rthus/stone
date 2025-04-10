@@ -74,6 +74,7 @@ public class PauseMenuManager : MonoBehaviour
 
         SoundManager.Instance.ambientSource.Pause();
         SoundManager.Instance.sfxSource.Stop();
+        SoundManager.Instance.loopingSource.Pause();
         SoundManager.Instance.uiSource.Pause();
 
         OnPauseStateChanged?.Invoke(true);
@@ -87,6 +88,8 @@ public class PauseMenuManager : MonoBehaviour
 
         SoundManager.Instance.ambientSource.UnPause();
         SoundManager.Instance.uiSource.UnPause();
+        SoundManager.Instance.loopingSource.UnPause();
+
 
         OnPauseStateChanged?.Invoke(false);
     }
