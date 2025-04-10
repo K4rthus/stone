@@ -83,7 +83,13 @@ public class MonsterController : MonoBehaviour
         if (playerMovement != null)
         {
             playerMovement.SetControl(false);
-            SoundManager.Instance.sfxSource.Stop();
+
+            Rigidbody2D playerRb = playerMovement.GetComponent<Rigidbody2D>();
+            if (playerRb != null)
+            {
+                playerRb.constraints |= RigidbodyConstraints2D.FreezePositionX;
+                playerRb.linearVelocity = new Vector2(0, playerRb.linearVelocity.y);
+            }
         }
 
         if (gameOverSound != null)

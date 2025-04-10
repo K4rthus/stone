@@ -3,90 +3,272 @@
   "nodes": [
     {
       "id": "node1",
-      "text": "Bell \nПример первого диалогвого текста",
+      "text": "На камне лежит велосипедный звонок",
       "options": [
         {
-          "text": "Выбор 1",
+          "text": "Позвонить в него",
+          "sound": "doubleBell",
           "targetNode": "node2",
-          "activateReturnButton": true
+          "flagOperations": [{"flagName": "tryBell", "newState": true}]
         },
         {
-          "text": "Выбор 2",
+          "text": "Осмотреть звонок",
           "targetNode": "node3",
-          "activateReturnButton": true,
-          "flagOperations": [
-            {"flagName": "hasFirst", "newState": true}
-          ]
+          "flagOperations": [{"flagName": "checkBell", "newState": true}]
         },
         {
-          "text": "Выбор 3",
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}]
+        },
+        {
+          "text": "Уйти",
           "activateReturnButton": true,
-          "sound": "bell",
-          "targetNode": "node5"
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node2",
-      "text": "Текст выбора 1",
+      "text": "...ответный звонок шел издалека, но был лишь немного тише",
       "options": [
         {
-          "text": "Конец ветки выбора 1"
+          "text": "Позвонить еще раз",
+          "sound": "bell",
+          "targetNode": "node6"
         },
         {
-          "text": "Прочитать",
-          "targetNode": "node6",
-          "conditions": [{"flagName": "hasFirst", "requiredState": true}]
+          "text": "Осмотреть звонок",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkBell", "newState": true}],
+          "conditions": [{"flagName": "checkBell", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Ответного звонка нет, что происходит?..",
+      "options": [
+        {
+          "text": "Позвонить еще раз",
+          "sound": "bell",
+          "targetNode": "node7"
+        },
+        {
+          "text": "Осмотреть звонок",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkBell", "newState": true}],
+          "conditions": [{"flagName": "checkBell", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },{
+      "id": "node7",
+      "text": "Все также",
+      "options": [
+        {
+          "text": "Позвонить еще раз",
+          "sound": "bell",
+          "targetNode": "node7"
+        },
+        {
+          "text": "Осмотреть звонок",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkBell", "newState": true}],
+          "conditions": [{"flagName": "checkBell", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node3",
-      "text": "Текст выбора 2",
+      "text": "Обычный велосипедный звонок, на нем нет никаких брендов или чего-либо еще",
       "options": [
         {
-          "text": "Спросить о палатке",
-          "targetNode": "node7",
-          "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
+          "text": "Позвонить в него",
+          "sound": "doubleBell",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "tryBell", "newState": true}],
+          "conditions": [{"flagName": "tryBell", "requiredState": false}]
         },
         {
-          "text": "Схватить полено",
-          "targetNode": "node8",
-          "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
+          "text": "Разобрать звонок",
+          "targetNode": "node8"
+        },
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
-      "id": "node4",
-      "text": "Текст выбора 3",
+      "id": "node8",
+      "text": "Внутри тоже ничего особенного, обычный механизм",
       "options": [
         {
-          "text": "Копнуть землю",
-          "targetNode": "node9"
+          "text": "Забрать с собой",
+          "targetNode": "node9",
+          "flagOperations": [{"flagName": "hasBell", "newState": true}]
         },
         {
-          "text": "Записать координаты",
+          "text": "Осмотреть камень",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "Собрав звонок обратно, ты кладешь его в рюкзак",
+      "options": [
+        {
+          "text": "Осмотреть камень",
           "targetNode": "node10",
-          "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-          "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
+          "flagOperations": [{"flagName": "checkBellStone", "newState": true}],
+          "conditions": [{"flagName": "checkBellStone", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
         }
       ]
     },
     {
       "id": "node5",
-      "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
+      "text": "Камень похож на те, из которых собран забор",
       "options": [
         {
-          "text": "Идти в чащу",
-          "targetNode": "node28",
-          "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
+          "text": "Сдвинуть камень",
+          "targetNode": "node11"
         },
         {
-          "text": "Вернуться к костру",
+          "text": "Уйти",
           "activateReturnButton": true,
-          "targetNode": "node1"
+          "targetNode": "nodeExit"
         }
       ]
+    },
+    {
+      "id": "node10",
+      "text": "Камень похож на те, из которых собран забор",
+      "options": [
+        {
+          "text": "Сдвинуть камень",
+          "flagOperations": [{"flagName": "underStone", "newState": true}],
+          "targetNode": "node12"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node11",
+      "text": "Камень, вместе со звоном, неохотно опрокидывается, оставляя за собой небольшую ямку в земле",
+      "options": [
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node12",
+      "text": "Камень неохотно опрокидывается, оставляя за собой небольшую ямку в земле, но кажется, там что-то есть",
+      "options": [
+        {
+          "text": "Осмотреть ямку",
+          "targetNode": "node13",
+          "flagOperations": [{"flagName": "readBellWarning", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node13",
+      "text": "На дне ямки лежит записка: \"Звуки привлекают тех, кто не может видеть\"",
+      "options": [
+        {
+          "text": "Забрать бумажку",
+          "targetNode": "node14"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node14",
+      "text": "Как только ты ее касаешь, записка исчезает",
+      "options": [
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Убрав фотографию в рюкзак, ты отходишь теперь уже от пустого камня"
     }
   ]
 }

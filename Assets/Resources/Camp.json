@@ -1,92 +1,191 @@
 {
-    "startNode": "node1",
-    "nodes": [
-      {
-        "id": "node1",
-        "text": "Пример первого диалогвого текста",
-        "options": [
-          {
-            "text": "Выбор 1",
-            "targetNode": "node2",
-            "activateReturnButton": true
-          },
-          {
-            "text": "Выбор 2",
-            "targetNode": "node3",
-            "activateReturnButton": true,
-            "flagOperations": [
-              {"flagName": "hasFirst", "newState": true}
-            ]
-          },
-          {
-            "text": "Выбор 3",
-            "activateReturnButton": true,
-            "sound": "bell",
-            "targetNode": "node5"
-          }
-        ]
-      },
-      {
-        "id": "node2",
-        "text": "Текст выбора 1",
-        "options": [
-          {
-            "text": "Конец ветки выбора 1"
-          },
-          {
-            "text": "Прочитать",
-            "targetNode": "node6",
-            "conditions": [{"flagName": "hasFirst", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node3",
-        "text": "Текст выбора 2",
-        "options": [
-          {
-            "text": "Спросить о палатке",
-            "targetNode": "node7",
-            "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
-          },
-          {
-            "text": "Схватить полено",
-            "targetNode": "node8",
-            "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node4",
-        "text": "Текст выбора 3",
-        "options": [
-          {
-            "text": "Копнуть землю",
-            "targetNode": "node9"
-          },
-          {
-            "text": "Записать координаты",
-            "targetNode": "node10",
-            "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-            "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node5",
-        "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
-        "options": [
-          {
-            "text": "Идти в чащу",
-            "targetNode": "node28",
-            "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-          },
-          {
-            "text": "Вернуться к костру",
-            "activateReturnButton": true,
-            "targetNode": "node1"
-          }
-        ]
-      }
-    ]
-  }
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Потухший костер, уже холодный, видимо здесь никого нет уже несколько часов",
+      "options": [
+        {
+          "text": "Покопаться в костре",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedCampfire", "newState": true}]
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "В самом костре ничего не осталсь кроме углей",
+      "options": [
+        {
+          "text": "Раздвинуть камни",
+          "targetNode": "node4",
+          "conditions": [{"flagName": "underStone", "requiredState": true}]
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Под камнями тоже ничего нет, но один выглядит как-то странно",
+      "options": [
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5"
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "На той строне, которой камень лежал на земле есть какие-то отметины",
+      "options": [
+        {
+          "text": "Рассомтреть подробнее",
+          "targetNode": "node6"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Пригледевшись, ты понимаешь, что это какая-то руна: ᚨ",
+      "options": [
+        {
+          "text": "Осмотреть другие камни",
+          "targetNode": "node7"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "На других камнях тоже есть руны, в итоге получается ᚨᚾᚨᛋᚢᚨᛞᚨᚦ",
+      "options": [
+        {
+          "text": "Пропробовать прочитать",
+          "flagOperations": [{"flagName": "knowSymbols", "newState": true}],
+          "targetNode": "node8"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node8",
+      "text": "Хотя ты никогда до этого не видел эти руны, ты подсознательно расставляешь их в другом порядке: ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ, а в гололве звучит: Адаха Суна",
+      "options": [
+        {
+          "text": "Произнести вслух",
+          "flagOperations": [{"flagName": "symbols1", "newState": true}],
+          "targetNode": "node10"
+        },
+        {
+          "text": "Не рисковать",
+          "targetNode": "node9"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "Не сразу, но у тебя получилось заглушить голос в голове",
+      "options": [
+
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node10",
+      "text": "Сказав \"ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ\", голос затихает, и как-то на душе легче становиться",
+      "options": [
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Рядом с костром стоят камни, на которых повидимому сидели, а также немного мусора около них",
+      "options": [
+        {
+          "text": "Покопаться в костре",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedCampfire", "newState": true}],
+          "conditions": [{"flagName": "checkedCampfire", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}

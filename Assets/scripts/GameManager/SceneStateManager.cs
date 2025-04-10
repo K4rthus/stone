@@ -10,6 +10,8 @@ public class SceneStateManager : MonoBehaviour
     public string CurrentScene { get; private set; }
     public string PreviousScene { get; private set; }
 
+    private string _nextScene;
+
     [SerializeField] public Vector3 initialPlayerPosition = new(-1.131f, -0.498f, 0f);
     [SerializeField] public string startSceneName = "Field";
 
@@ -41,6 +43,16 @@ public class SceneStateManager : MonoBehaviour
         {
             sceneStates[CurrentScene].usedInteractables.Add(interactableId);
         }
+    }
+
+    public void SetNextScene(string sceneName)
+    {
+        _nextScene = sceneName;
+    }
+
+    public string GetNextScene()
+    {
+        return _nextScene;
     }
 
     public void LoadGameState(SaveData saveData)

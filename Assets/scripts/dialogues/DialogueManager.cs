@@ -19,7 +19,10 @@ public class DialogueManager : MonoBehaviour
     private DialogueData currentDialogue;
 
     [Header("Return Button")]
-    public Button returnButton;
+    public Button returnButton = null;
+
+    [Header("Scene Transition Button")]
+    public Button sceneTransitionButton = null;
 
 
     private PauseMenuManager pauseMenu;
@@ -108,16 +111,33 @@ public class DialogueManager : MonoBehaviour
             }
         }
 
+        bool hasSceneTransition = false;
+        if (sceneTransitionButton != null)
+        {
+            var sceneTransitionState = SceneTransitionButtonManager.Instance.GetButtonState(
+                dialogueFileName,
+                _currentNode.id
+            );
+            hasSceneTransition = sceneTransitionState != null && sceneTransitionState.isActive;
+
+            CanvasGroup sceneTransitionCG = sceneTransitionButton.GetComponent<CanvasGroup>();
+            sceneTransitionCG.alpha = (hasSceneTransition && !shouldBlock) ? 1f : 0.5f;
+            sceneTransitionCG.interactable = hasSceneTransition && !shouldBlock;
+            sceneTransitionCG.blocksRaycasts = hasSceneTransition && !shouldBlock;
+        }
+
         if (returnButton != null)
         {
-            bool isActive = ReturnButtonManager.Instance.IsReturnButtonActive(dialogueFileName, _currentNode.id);
-            CanvasGroup cg = returnButton.GetComponent<CanvasGroup>();
+            bool isReturnActive = !hasSceneTransition &&
+                ReturnButtonManager.Instance.IsReturnButtonActive(dialogueFileName, _currentNode.id);
 
-            cg.alpha = (isActive && !shouldBlock) ? 1f : 0.5f;
-            cg.interactable = isActive && !shouldBlock;
-            cg.blocksRaycasts = isActive && !shouldBlock;
+            CanvasGroup returnCG = returnButton.GetComponent<CanvasGroup>();
+            returnCG.alpha = (isReturnActive && !shouldBlock) ? 1f : 0.5f;
+            returnCG.interactable = isReturnActive && !shouldBlock;
+            returnCG.blocksRaycasts = isReturnActive && !shouldBlock;
         }
     }
+
 
     bool CheckConditions(List<FlagCondition> conditions)
     {
@@ -144,18 +164,12 @@ public class DialogueManager : MonoBehaviour
 
     public void SelectOption(DialogueOption option)
     {
-        if (pauseMenu != null && pauseMenu.IsPaused)
-        {
-            return;
-        }
+        if (pauseMenu != null && pauseMenu.IsPaused) return;
 
         if (!string.IsNullOrEmpty(option.sound))
         {
             AudioClip clip = Resources.Load<AudioClip>($"Sounds/Dialogue/{option.sound}");
-            if (clip != null)
-            {
-                SoundManager.Instance.PlaySFX(clip);
-            }
+            SoundManager.Instance.PlaySFX(clip);
         }
 
         ApplyOperations(option.flagOperations);
@@ -163,13 +177,28 @@ public class DialogueManager : MonoBehaviour
         if (!string.IsNullOrEmpty(option.targetNode))
         {
             var targetNode = currentDialogue.nodes.Find(n => n.id == option.targetNode);
+
             if (option.activateReturnButton && targetNode != null)
             {
                 ReturnButtonManager.Instance.SetReturnButtonState(dialogueFileName, targetNode.id, true);
             }
 
-            StartDialogue(option.targetNode);
+            if (option.activateSceneTransition && targetNode != null)
+            {
+                SceneTransitionButtonManager.Instance.SetButtonState(dialogueFileName, targetNode.id, true);
+            }
 
+            if (option.activateSceneTransition)
+            {
+                SceneTransitionButton button = FindFirstObjectByType<SceneTransitionButton>();
+                if (button != null)
+                {
+                    button.gameObject.SetActive(true);
+                    SceneStateManager.Instance.SetNextScene(button.targetScene);
+                }
+            }
+
+            StartDialogue(option.targetNode);
             SaveManager.Instance.SaveGame();
         }
         else

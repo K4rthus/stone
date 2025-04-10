@@ -24,7 +24,8 @@ public class ReturnButtonManager : MonoBehaviour
     public void SetReturnButtonState(string dialogueFile, string nodeId, bool isActive)
     {
         returnButtonStates.RemoveAll(s =>
-            s.dialogueFile == dialogueFile && s.nodeId == nodeId);
+            s.dialogueFile == dialogueFile &&
+            s.nodeId == nodeId);
 
         returnButtonStates.Add(new ReturnButtonState
         {

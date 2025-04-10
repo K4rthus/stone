@@ -3,90 +3,86 @@
   "nodes": [
     {
       "id": "node1",
-      "text": "Leg \nПример первого диалогвого текста",
+      "text": "............\n..........\n...Нога...",
       "options": [
         {
-          "text": "Выбор 1",
-          "targetNode": "node2",
-          "activateReturnButton": true
+          "text": "Обдумать все",
+          "targetNode": "node2"
         },
         {
-          "text": "Выбор 2",
-          "targetNode": "node3",
+          "text": "Даже не пытаться",
           "activateReturnButton": true,
-          "flagOperations": [
-            {"flagName": "hasFirst", "newState": true}
-          ]
-        },
-        {
-          "text": "Выбор 3",
-          "activateReturnButton": true,
-          "sound": "bell",
-          "targetNode": "node5"
+          "targetNode": "nodeExit"
         }
       ]
     },
     {
       "id": "node2",
-      "text": "Текст выбора 1",
+      "text": "Так, за мной только что бежало что-то,.. где оно?\nПочему здесь стоит кусок ноги",
       "options": [
         {
-          "text": "Конец ветки выбора 1"
+          "text": "Что-то",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "aboutMonster", "newState": true}]
         },
         {
-          "text": "Прочитать",
-          "targetNode": "node6",
-          "conditions": [{"flagName": "hasFirst", "requiredState": true}]
+          "text": "Нога",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "aboutLeg", "newState": true}]
         }
       ]
     },
     {
       "id": "node3",
-      "text": "Текст выбора 2",
+      "text": "За мной бежала какая-то хрень, но она пропала, когда я сделал фотку, может она боится вспышки?..",
       "options": [
         {
-          "text": "Спросить о палатке",
-          "targetNode": "node7",
-          "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
+          "text": "Нога",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "aboutLeg", "newState": true}],
+          "conditions": [{"flagName": "aboutLeg", "requiredState": false}]
         },
         {
-          "text": "Схватить полено",
-          "targetNode": "node8",
-          "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
+          "text": "Итог",
+          "activateReturnButton": true,
+          "targetNode": "node5",
+          "conditions": 
+          [
+            {"flagName": "aboutMonster", "requiredState": true},
+            {"flagName": "aboutLeg", "requiredState": true}
+          ]
         }
       ]
     },
     {
       "id": "node4",
-      "text": "Текст выбора 3",
+      "text": "Видимо это осталось от прошлых посетителей, но тот, кого я ищу, точнго был не в кедах",
       "options": [
         {
-          "text": "Копнуть землю",
-          "targetNode": "node9"
+          "text": "Монстр",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "aboutMonster", "newState": true}],
+          "conditions": [{"flagName": "aboutMonster", "requiredState": false}]
         },
         {
-          "text": "Записать координаты",
-          "targetNode": "node10",
-          "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-          "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
+          "text": "Итог",
+          "activateReturnButton": true,
+          "targetNode": "node5",
+          "conditions": 
+          [
+            {"flagName": "aboutMonster", "requiredState": true},
+            {"flagName": "aboutLeg", "requiredState": true}
+          ]
         }
       ]
     },
     {
       "id": "node5",
-      "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
-      "options": [
-        {
-          "text": "Идти в чащу",
-          "targetNode": "node28",
-          "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-        },
-        {
-          "text": "Вернуться к костру",
-          "activateReturnButton": true,
-          "targetNode": "node1"
-        }
-      ]
+      "text": "Скорее всего, владелец ноги не решился сделать фото или, если я не ошибаюсь, сделал его без вспышки. А это его догнало. Это пока что саиое неожиданное фото."
+    },
+    {
+      "id": "nodeExit",
+      "text": "Ты кладешь фотку в рюкзак и стараешься об этом не думать"
     }
   ]
 }

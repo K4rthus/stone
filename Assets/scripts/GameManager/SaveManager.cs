@@ -78,6 +78,7 @@ public class SaveManager : MonoBehaviour
             }
 
             ReturnButtonManager.Instance.returnButtonStates = CurrentSaveData.returnButtonStates;
+            SceneTransitionButtonManager.Instance.buttonStates = CurrentSaveData.sceneTransitionStates;
             SceneStateManager.Instance.LoadGameState(CurrentSaveData);
         }
     }
