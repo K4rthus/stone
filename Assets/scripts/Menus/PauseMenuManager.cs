@@ -1,20 +1,19 @@
 using UnityEngine;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PauseMenuManager : MonoBehaviour
 {
-    [Header("Меню паузы")]
+    [Header("Pause menu")]
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private Button continueButton;
     [SerializeField] private Button volumeButton;
     [SerializeField] private Button exitButton;
 
-    [Header("Настройки звука")]
+    [Header("Sound settings")]
     [SerializeField] private Slider volumeSlider;
 
-    [Header("Звуки UI")]
+    [Header("UI sounds")]
     [SerializeField] private AudioClip buttonClickSound;
 
     public bool IsPaused { get; private set; }
@@ -24,12 +23,12 @@ public class PauseMenuManager : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
 
-        volumeSlider.value = SoundSettings.Instance.masterVolume; // Установка значения слайдера
+        volumeSlider.value = SoundSettings.Instance.masterVolume;
         volumeSlider.onValueChanged.AddListener(v => {
-            SoundSettings.Instance.SetMasterVolume(v); // Привязка изменения слайдера к MasterVolume
+            SoundSettings.Instance.SetMasterVolume(v);
         });
 
-        volumeSlider.gameObject.SetActive(false); // Скрываем слайдер при старте
+        volumeSlider.gameObject.SetActive(false);
         volumeButton.onClick.AddListener(() => SoundManager.Instance.PlayUI(buttonClickSound));
         volumeButton.onClick.AddListener(ToggleVolumeSlider);
 
@@ -49,7 +48,7 @@ public class PauseMenuManager : MonoBehaviour
 
     private void ToggleVolumeSlider()
     {
-        volumeSlider.gameObject.SetActive(!volumeSlider.gameObject.activeSelf); // Переключаем видимость слайдера
+        volumeSlider.gameObject.SetActive(!volumeSlider.gameObject.activeSelf);
     }
 
     private void TogglePause()
@@ -69,7 +68,11 @@ public class PauseMenuManager : MonoBehaviour
         IsPaused = true;
         Time.timeScale = 0f;
         pauseMenuUI.SetActive(true);
+
         SoundManager.Instance.ambientSource.Pause();
+        SoundManager.Instance.sfxSource.Stop();
+        SoundManager.Instance.uiSource.Pause();
+
         OnPauseStateChanged?.Invoke(true);
     }
 
@@ -78,7 +81,10 @@ public class PauseMenuManager : MonoBehaviour
         IsPaused = false;
         Time.timeScale = 1f;
         pauseMenuUI.SetActive(false);
+
         SoundManager.Instance.ambientSource.UnPause();
+        SoundManager.Instance.uiSource.UnPause();
+
         OnPauseStateChanged?.Invoke(false);
     }
 

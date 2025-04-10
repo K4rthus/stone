@@ -18,11 +18,10 @@ public class SoundManager : MonoBehaviour
             Instance = this;
             DontDestroyOnLoad(gameObject);
 
-            // Находим SoundSettings в сцене
             SoundSettings soundSettings = FindFirstObjectByType<SoundSettings>();
             if (soundSettings == null)
             {
-                Debug.LogError("SoundSettings не найден в сцене!");
+                Debug.LogError("SoundSettings not found in the scene!");
                 return;
             }
 
@@ -57,6 +56,27 @@ public class SoundManager : MonoBehaviour
     public void PlayUI(AudioClip clip)
     {
         uiSource.PlayOneShot(clip);
+    }
+
+    public void StopAllSounds()
+    {
+        ambientSource.Stop();
+        sfxSource.Stop();
+        uiSource.Stop();
+    }
+
+    public void PauseAllSounds()
+    {
+        ambientSource.Pause();
+        sfxSource.Pause();
+        uiSource.Pause();
+    }
+
+    public void ResumeAllSounds()
+    {
+        ambientSource.UnPause();
+        sfxSource.UnPause();
+        uiSource.UnPause();
     }
 
     void OnDestroy()

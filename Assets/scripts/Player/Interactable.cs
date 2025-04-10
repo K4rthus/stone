@@ -9,11 +9,11 @@ public class Interactable : MonoBehaviour
     [SerializeField] private GameObject outlineObject;
     [SerializeField] private Animator animator;
 
-    [Header("Настройки диалога")]
+    [Header("Dialodue settings")]
     [SerializeField] private string dialogueFileName;
     [SerializeField] private string startNodeId = "node1";
 
-    [Header("Звук нажатия")]
+    [Header("Click sound")]
     [SerializeField] private AudioClip clickSound;
 
     private Collider2D _collider;
@@ -24,8 +24,8 @@ public class Interactable : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _renderer = GetComponent<SpriteRenderer>();
 
-        if (GameManager.Instance.sceneStates.ContainsKey(SceneManager.GetActiveScene().name) &&
-            GameManager.Instance.sceneStates[SceneManager.GetActiveScene().name].usedInteractables.Contains(uniqueId))
+        if (SceneStateManager.Instance.sceneStates.ContainsKey(SceneManager.GetActiveScene().name) &&
+            SceneStateManager.Instance.sceneStates[SceneManager.GetActiveScene().name].usedInteractables.Contains(uniqueId))
         {
             DisableInteraction();
         }
@@ -54,14 +54,14 @@ public class Interactable : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
 
         Vector3 playerPos = GameObject.FindGameObjectWithTag("Player").transform.position;
-        GameManager.Instance.SaveCurrentState(playerPos, uniqueId);
+        SceneStateManager.Instance.SaveCurrentState(playerPos, uniqueId);
 
         if (!string.IsNullOrEmpty(dialogueFileName))
         {
             GameManager.Instance.SaveDialogueData(dialogueFileName, startNodeId);
         }
 
-        GameManager.Instance.SaveGame();
+        SaveManager.Instance.SaveGame();
         SceneManager.LoadScene(targetScene);
     }
 

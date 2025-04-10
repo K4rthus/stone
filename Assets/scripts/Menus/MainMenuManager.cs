@@ -7,35 +7,35 @@ using System.Collections;
 
 public class MainMenuManager : MonoBehaviour
 {
-    [Header("Кнопки")]
+    [Header("Buttons")]
     [SerializeField] private Button newGameButton;
     [SerializeField] private Button loadGameButton;
     [SerializeField] private Button controlsButton;
     [SerializeField] private Button volumeButton;
     [SerializeField] private Button exitButton;
 
-    [Header("Окно подтверждения")]
+    [Header("Confirmation window")]
     [SerializeField] private GameObject confirmationPanel;
     [SerializeField] private TextMeshProUGUI confirmationText;
     [SerializeField] private Button confirmButton;
     [SerializeField] private Button cancelButton;
 
-    [Header("Настройки управления")]
+    [Header("Settings")]
     [SerializeField] private GameObject controlsPanel;
     [SerializeField] private Animator panelAnimator;
     [SerializeField] private CanvasGroup panelCanvasGroup;
 
-    [Header("Эффекты выхода")]
+    [Header("Exit animation")]
     [SerializeField] private Image backgroundFade;
     [SerializeField] private float fadeDuration = 5f;
 
-    [Header("Настройки звука")]
+    [Header("Sound settings")]
     [SerializeField] private Slider volumeSlider;
 
-    [Header("Звуки UI")]
+    [Header("UI sounds")]
     [SerializeField] private AudioClip buttonClickSound;
 
-    [Header("Настройки")]
+    [Header("First game scene")]
     [SerializeField] private string firstSceneName = "Field";
 
     private bool isPanelVisible;
@@ -171,7 +171,7 @@ public class MainMenuManager : MonoBehaviour
 
     private void ProceedWithNewGame()
     {
-        GameManager.Instance.DeleteSave();
+        SaveManager.Instance.DeleteSave();
         GameManager.Instance.ResetGame();
         SceneManager.LoadScene(firstSceneName);
     }
@@ -228,7 +228,7 @@ public class MainMenuManager : MonoBehaviour
     {
         if (File.Exists(Path.Combine(Application.persistentDataPath, "savegame.json")))
         {
-            GameManager.Instance.LoadGame();
+            SaveManager.Instance.LoadGame();
         }
     }
 }

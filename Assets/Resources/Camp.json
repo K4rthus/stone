@@ -19,7 +19,7 @@
             "text": "Собрать вещи",
             "targetNode": "node3",
             "activateReturnButton": true,
-            "sound": "bell-ringing.расширениефайла",
+            "sound": "bell-ringing",
             "flagOperations": [
               {"flagName": "gpsEnabled", "newState": true},
               {"flagName": "hasFlashlight", "newState": true}

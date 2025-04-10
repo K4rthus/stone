@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private float minXBoundary;
 
-    [Header("Звук шагов")]
+    [Header("Walking sound")]
     [SerializeField] private AudioClip footstepSound;
 
     private Rigidbody2D rb;
@@ -31,11 +31,29 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleMovement()
     {
+        if (pauseMenu != null && pauseMenu.IsPaused)
+        {
+            if (isMoving)
+            {
+                SoundManager.Instance.sfxSource.Stop();
+                isMoving = false;
+                animator.SetFloat("Speed", 0f);
+            }
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         Vector2 movement = new(horizontal * moveSpeed, rb.linearVelocity.y);
-        rb.linearVelocity = movement;
-        bool wasMoving = isMoving;
-        isMoving = Mathf.Abs(horizontal) > 0.1f;
+
+        if (!pauseMenu.IsPaused)
+        {
+            rb.linearVelocity = movement;
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
 
         if (transform.position.x < minXBoundary)
         {
@@ -45,7 +63,11 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
 
-        animator.SetFloat("Speed", Mathf.Abs(horizontal));
+        float speed = Mathf.Abs(horizontal);
+        animator.SetFloat("Speed", speed);
+
+        bool wasMoving = isMoving;
+        isMoving = speed > 0.1f;
 
         if (isMoving && !wasMoving)
         {
@@ -56,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             SoundManager.Instance.sfxSource.Stop();
         }
 
-        if (horizontal != 0)
+        if (horizontal != 0 && !pauseMenu.IsPaused)
         {
             transform.localScale = new Vector3(
                 Mathf.Sign(horizontal),
@@ -68,12 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if ((pauseMenu != null && pauseMenu.IsPaused) == false &&
-            Input.GetKeyDown(KeyCode.E) &&
-            currentInteractable != null)
+        if (pauseMenu.IsPaused ||
+            !Input.GetKeyDown(KeyCode.E) ||
+            currentInteractable == null)
         {
-            currentInteractable.TriggerInteraction();
+            return;
         }
+        currentInteractable.TriggerInteraction();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

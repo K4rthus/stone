@@ -10,7 +10,7 @@ public class ReturnButton : MonoBehaviour
         if (_isReturning) return;
 
         _isReturning = true;
-        string targetScene = GameManager.Instance.GetPreviousScene();
+        string targetScene = SceneStateManager.Instance.GetPreviousScene();
         if (!string.IsNullOrEmpty(targetScene))
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
@@ -26,7 +26,7 @@ public class ReturnButton : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
-        GameManager.Instance.SaveGame();
+        SaveManager.Instance.SaveGame();
         _isReturning = false;
     }
 }
