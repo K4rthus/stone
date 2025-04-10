@@ -61,6 +61,8 @@ public class SceneStateManager : MonoBehaviour
     {
         if (scene.name == "00_ManagerScene") return;
 
+        SoundManager.Instance.sfxSource.Stop();
+
         if (isLoading)
         {
             PreviousScene = SaveManager.Instance.CurrentSaveData.previousScene;

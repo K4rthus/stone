@@ -1,0 +1,92 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Hanging \nПример первого диалогвого текста",
+      "options": [
+        {
+          "text": "Выбор 1",
+          "targetNode": "node2",
+          "activateReturnButton": true
+        },
+        {
+          "text": "Выбор 2",
+          "targetNode": "node3",
+          "activateReturnButton": true,
+          "flagOperations": [
+            {"flagName": "hasFirst", "newState": true}
+          ]
+        },
+        {
+          "text": "Выбор 3",
+          "activateReturnButton": true,
+          "sound": "bell",
+          "targetNode": "node5"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Текст выбора 1",
+      "options": [
+        {
+          "text": "Конец ветки выбора 1"
+        },
+        {
+          "text": "Прочитать",
+          "targetNode": "node6",
+          "conditions": [{"flagName": "hasFirst", "requiredState": true}]
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Текст выбора 2",
+      "options": [
+        {
+          "text": "Спросить о палатке",
+          "targetNode": "node7",
+          "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
+        },
+        {
+          "text": "Схватить полено",
+          "targetNode": "node8",
+          "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Текст выбора 3",
+      "options": [
+        {
+          "text": "Копнуть землю",
+          "targetNode": "node9"
+        },
+        {
+          "text": "Записать координаты",
+          "targetNode": "node10",
+          "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
+          "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
+      "options": [
+        {
+          "text": "Идти в чащу",
+          "targetNode": "node28",
+          "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
+        },
+        {
+          "text": "Вернуться к костру",
+          "activateReturnButton": true,
+          "targetNode": "node1"
+        }
+      ]
+    }
+  ]
+}

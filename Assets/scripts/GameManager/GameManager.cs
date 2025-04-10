@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
         SaveManager.Instance.DeleteSave();
         FlagManager.Instance.ResetFlags();
 
+        Time.timeScale = 1f;
+
         SceneStateManager.Instance.sceneStates[SceneStateManager.Instance.startSceneName] = new SceneState
         {
             playerPosition = SceneStateManager.Instance.initialPlayerPosition,
