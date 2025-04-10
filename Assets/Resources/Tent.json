@@ -1,0 +1,96 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Внутри палатки лежат два спальных мешка",
+      "options": [
+        {
+          "text": "Осмотреть их",
+          "targetNode": "node2",
+          "flagOperations": 
+          [
+            {"flagName": "checkedSleepingBags", "newState": true},
+            {"flagName": "Tent", "newState": true}
+          ]
+        },
+        {
+          "text": "Осмотреть палатку",
+          "targetNode": "node3",
+          "flagOperations": 
+          [
+            {"flagName": "checkedTent", "newState": true},
+            {"flagName": "Tent", "newState": true}
+          ]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "Tent", "newState": true}]
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Это обычные спальные мешки, может получше качеством, чем те, которые используешь ты, но все еще просто спальные мешки",
+      "options": [
+        {
+          "text": "Осмотреть палатку",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedTent", "newState": true}],
+          "conditions": [{"flagName": "checkedTent", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Кроме мешков в ней ничего больше нет",
+      "options": [
+        {
+          "text": "Осмотреться еще",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedTent1", "newState": true}],
+          "conditions": [{"flagName": "checkedTent1", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть их",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSleepingBags", "newState": true}],
+          "conditions": [{"flagName": "checkedSleepingBags", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Сколько бы раз ты ни перепроверял все, в палатке лишь мешки, но почему их не забрали?..",
+      "options": [
+        {
+          "text": "Осмотреть их",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSleepingBags", "newState": true}],
+          "conditions": [{"flagName": "checkedSleepingBags", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}

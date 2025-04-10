@@ -1,0 +1,88 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "............\n..........\n...Нога...",
+      "options": [
+        {
+          "text": "Обдумать все",
+          "targetNode": "node2"
+        },
+        {
+          "text": "Даже не пытаться",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Так, за мной только что бежало что-то,.. где оно?\nПочему здесь стоит кусок ноги",
+      "options": [
+        {
+          "text": "Что-то",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "aboutMonster", "newState": true}]
+        },
+        {
+          "text": "Нога",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "aboutLeg", "newState": true}]
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "За мной бежала какая-то хрень, но она пропала, когда я сделал фотку, может она боится вспышки?..",
+      "options": [
+        {
+          "text": "Нога",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "aboutLeg", "newState": true}],
+          "conditions": [{"flagName": "aboutLeg", "requiredState": false}]
+        },
+        {
+          "text": "Итог",
+          "activateReturnButton": true,
+          "targetNode": "node5",
+          "conditions": 
+          [
+            {"flagName": "aboutMonster", "requiredState": true},
+            {"flagName": "aboutLeg", "requiredState": true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Видимо это осталось от прошлых посетителей, но тот, кого я ищу, точно был не в кедах",
+      "options": [
+        {
+          "text": "Монстр",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "aboutMonster", "newState": true}],
+          "conditions": [{"flagName": "aboutMonster", "requiredState": false}]
+        },
+        {
+          "text": "Итог",
+          "activateReturnButton": true,
+          "targetNode": "node5",
+          "conditions": 
+          [
+            {"flagName": "aboutMonster", "requiredState": true},
+            {"flagName": "aboutLeg", "requiredState": true}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "Скорее всего, владелец ноги не решился сделать фото или, если я не ошибаюсь, сделал его без вспышки. А это его догнало. Это пока что самое неожиданное фото."
+    },
+    {
+      "id": "nodeExit",
+      "text": "Ты кладешь фотку в рюкзак и стараешься об этом не думать"
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Еще один велосипедный звонок, откуда они здесь берутся, ни единого следа от колес велосипеда",
+      "options": [
+        {
+          "text": "Осмотреть его",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedDarkBell", "newState": true}],
+          "conditions": [{"flagName": "hasBell", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть его",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedDarkBell", "newState": true}],
+          "conditions": [{"flagName": "hasBell", "requiredState": true}]
+        },
+        {
+          "text": "Не рисковать",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Вроде обычный звонок",
+      "options": [
+        {
+          "text": "Позвонить",
+          "sound": "doubleBell",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "tryDarkBell", "newState": true}],
+          "conditions": 
+          [
+            {"flagName": "tryBell", "requiredState": false},
+            {"flagName": "tryDarkBell", "requiredState": false}
+          ]
+        },
+        {
+          "text": "Позвонить",
+          "sound": "doubleBell",
+          "targetNode": "node6",
+          "flagOperations": [{"flagName": "tryDarkBell", "newState": true}],
+          "conditions": 
+          [
+            {"flagName": "tryBell", "requiredState": true},
+            {"flagName": "tryDarkBell", "requiredState": false}
+          ]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Выглядет примерно также, как и прошлый",
+      "options": [
+        {
+          "text": "Позвонить",
+          "sound": "bell",
+          "targetNode": "node8",
+          "flagOperations": [{"flagName": "tryDarkBell", "newState": true}],
+          "conditions": 
+          [
+            {"flagName": "tryBell", "requiredState": false},
+            {"flagName": "tryDarkBell", "requiredState": false}
+          ]
+        },
+        {
+          "text": "Позвонить",
+          "sound": "bell",
+          "targetNode": "node9",
+          "flagOperations": [{"flagName": "tryDarkBell", "newState": true}],
+          "conditions": 
+          [
+            {"flagName": "tryBell", "requiredState": true},
+            {"flagName": "tryDarkBell", "requiredState": false}
+          ]
+        },
+        {
+          "text": "Достать тот",
+          "targetNode": "node10",
+          "conditions": [{"flagName": "hasBell", "requiredState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node10",
+      "text": "Они реально похожи, только новый - какой-то помятый",
+      "options": [
+        {
+          "text": "Забрать оба",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1",
+          "flagOperations": [{"flagName": "noBells", "newState": true}]
+        },
+        {
+          "text": "Оставить оба",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2",
+          "flagOperations": [{"flagName": "twoBells", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node8",
+      "text": "Звук раздался по всему лесу",
+      "options": [
+        {
+          "text": "Забрать звонок",
+          "targetNode": "nodeExit3",
+          "activateReturnButton": true,
+          "flagOperations": [{"flagName": "hasDarkBell", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "Звук разадлся по всему лесу, но ответного, как тогда, уже нет, видимто это и был второй",
+      "options": [
+        {
+          "text": "Забрать звонок",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit3",
+          "flagOperations": [{"flagName": "hasDarkBell", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "Второй звонок шел откуда-то, где ты уже был, но кто мог это сделать?..",
+      "options": [
+        {
+          "text": "Забрать звонок",
+          "targetNode": "node7",
+          "flagOperations": [{"flagName": "takedDarkBell", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Второй звонок шел откуда-то, где ты уже был, опять?",
+      "options": [
+        {
+          "text": "Забрать звонок",
+          "targetNode": "node7",
+          "flagOperations": [{"flagName": "tryDarkBell", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "Теперь у тебя в рюкзаке лежит звонок",
+      "options": [
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Положив оба звонка на что-то похожее на дерево, ты кладешь снимок в рюкзак и отходишь"
+    },
+    {
+      "id": "nodeExit2",
+      "text": "Положив оба звонка и фото в рюкзак, ты отходишь от это странной деревяшки"
+    },
+    {
+      "id": "nodeExit3",
+      "text": "Положив уже второй звонок и фото в рюкзак, ты отходишь от это странной деревяшки"
+    }
+  ]
+}

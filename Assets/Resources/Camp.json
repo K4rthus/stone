@@ -1,438 +1,200 @@
 {
-    "startNode": "node1",
-    "nodes": [
-      {
-        "id": "node1",
-        "text": "Поздняя осень. Заброшенная лесная поляна. \n Вы разожгли костёр, чтобы согреться, но пламя странно неподвижно, будто вырезано из бумаги. Воздух пахнет горелой кожей. Из-за деревьев доносится шёпот, похожий на ваш собственный голос...",
-        "options": [
-          {
-            "text": "пойти в дом",
-            "activateReturnButton": true,
-            "flagOperations": [
-                {
-                    "flagName": "fork", 
-                    "newState": true
-                }
-            ]
-          },
-          {
-            "text": "Собрать вещи",
-            "targetNode": "node3",
-            "activateReturnButton": true,
-            "sound": "bell-ringing.расширениефайла",
-            "flagOperations": [
-              {"flagName": "gpsEnabled", "newState": true},
-              {"flagName": "hasFlashlight", "newState": true}
-            ]
-          },
-          {
-            "text": "Не пиво",
-            "activateReturnButton": true,
-            "targetNode": "node5"
-          }
-        ]
-      },
-      {
-        "id": "node2",
-        "text": "Шёпот стихает. Напротив сидит ваша копия с лицом в пепле. Протягивает блокнот с вашим почерком и схемой поляны.",
-        "options": [
-          {
-            "text": "Разорвать блокнот",
-            "targetNode": "node5",
-            "flagOperations": [{"flagName": "notebookDestroyed", "newState": true}]
-          },
-          {
-            "text": "Прочитать",
-            "targetNode": "node6",
-            "conditions": [{"flagName": "hasFlashlight", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node3",
-        "text": "Вы идёте по тропе, но через десять минут возвращаетесь к тому же костру. На вашем месте сидит человек в чёрном плаще с вашими часами.",
-        "options": [
-          {
-            "text": "Спросить о палатке",
-            "targetNode": "node7",
-            "conditions": [{"flagName": "notebookDestroyed", "requiredState": false}]
-          },
-          {
-            "text": "Схватить полено",
-            "targetNode": "node8",
-            "flagOperations": [{"flagName": "hasWeapon", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node4",
-        "text": "Шёпот: ...под землёй... \nони шевелятся... \nПламя клонится к северу, но ветра нет.",
-        "options": [
-          {
-            "text": "Копнуть землю",
-            "targetNode": "node9"
-          },
-          {
-            "text": "Записать координаты",
-            "targetNode": "node10",
-            "conditions": [{"flagName": "gpsEnabled", "requiredState": true}],
-            "flagOperations": [{"flagName": "coordinatesSaved", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node5",
-        "text": "Бумага кровоточит. Двойник исчезает. В рюкзаке - целый блокнот. Появилась новая тропа.",
-        "options": [
-          {
-            "text": "Идти в чащу",
-            "targetNode": "node28",
-            "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-          },
-          {
-            "text": "Вернуться к костру",
-            "activateReturnButton": true,
-            "targetNode": "node1"
-          }
-        ]
-      },
-      {
-        "id": "node6",
-        "text": "«Они видят через огонь.» Костёр гаснет. Фонарь ломается.",
-        "options": [
-          {
-            "text": "Искать выход в темноте",
-            "targetNode": "node20",
-            "conditions": [{"flagName": "coordinatesSaved", "requiredState": true}]
-          },
-          {
-            "text": "Зажечь спичку",
-            "targetNode": "node14",
-            "flagOperations": [{"flagName": "photoBurned", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node7",
-        "text": "Человек снимает капюшон - ваше лицо со шрамом. На спине следы когтей.",
-        "options": [
-          {
-            "text": "Спросить о шраме",
-            "targetNode": "node11",
-            "conditions": [{"flagName": "photoBurned", "requiredState": false}]
-          },
-          {
-            "text": "Ударить поленом",
-            "targetNode": "node12",
-            "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node8",
-        "text": "В пепле находите фото: вы в палатке, за окном - рука с ножом. Координаты совпадают с поляной.",
-        "options": [
-          {
-            "text": "Показать двойнику",
-            "targetNode": "node13",
-            "conditions": [{"flagName": "shouted", "requiredState": true}]
-          },
-          {
-            "text": "Сжечь фото",
-            "targetNode": "node14",
-            "flagOperations": [{"flagName": "photoBurned", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node9",
-        "text": "Лопата натыкается на пульсирующие корни. Пламя зеленеет, слышен стон из-под земли.",
-        "options": [
-          {
-            "text": "Вытащить корни",
-            "targetNode": "node15",
-            "conditions": [{"flagName": "hasWeapon", "requiredState": true}]
-          },
-          {
-            "text": "Бежать",
-            "targetNode": "node16"
-          }
-        ]
-      },
-      {
-        "id": "node10",
-        "text": "Экран гаджета показывает 3.14... Сзади хрустнул снег.",
-        "options": [
-          {
-            "text": "Повернуться",
-            "targetNode": "node17",
-            "conditions": [{"flagName": "hasFlashlight", "requiredState": true}]
-          },
-          {
-            "text": "Скрыться",
-            "targetNode": "node18"
-          }
-        ]
-      },
-      {
-        "id": "node11",
-        "text": "Он отвечает: «Это цена за правду». Ветер усиливается, холод проникает в душу.",
-        "options": [
-          {
-            "text": "Спросить о цене",
-            "targetNode": "node19"
-          },
-          {
-            "text": "Убежать в лес",
-            "targetNode": "node20"
-          }
-        ]
-      },
-      {
-        "id": "node12",
-        "text": "Вы бьёте поленом, но плащ пуст. Фото падает в пепел.",
-        "options": [
-          {
-            "text": "Подобрать фото",
-            "targetNode": "node8"
-          },
-          {
-            "text": "Бежать",
-            "targetNode": "node16"
-          }
-        ]
-      },
-      {
-        "id": "node13",
-        "text": "Копия смотрит на фото: «Ты не должен был это видеть».",
-        "options": [
-          {
-            "text": "Спросить почему",
-            "targetNode": "node21"
-          },
-          {
-            "text": "Сжечь фото",
-            "targetNode": "node14",
-            "flagOperations": [{"flagName": "photoBurned", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node14",
-        "text": "Пламя поглощает фото. Воздух становится тяжелее.",
-        "options": [
-          {
-            "text": "Осмотреть костёр",
-            "targetNode": "node22"
-          }
-        ]
-      },
-      {
-        "id": "node15",
-        "text": "Корни разрываются. Под ними — человеческие пальцы, шевелящиеся как пауки.",
-        "options": [
-          {
-            "text": "Коснуться",
-            "targetNode": "node23"
-          },
-          {
-            "text": "Бежать",
-            "targetNode": "node16"
-          }
-        ]
-      },
-      {
-        "id": "node16",
-        "text": "Вы бежите, но звуки преследуют. Тропа ведёт обратно к костру.",
-        "options": [
-          {
-            "text": "Вернуться",
-            "targetNode": "node1"
-          }
-        ]
-      },
-      {
-        "id": "node17",
-        "text": "Никого. Снег искрится странным светом. На земле — следы когтей.",
-        "options": [
-          {
-            "text": "Идти по следам",
-            "targetNode": "node24",
-            "conditions": [{"flagName": "coordinatesSaved", "requiredState": true}]
-          },
-          {
-            "text": "Вернуться",
-            "targetNode": "node1"
-          }
-        ]
-      },
-      {
-        "id": "node18",
-        "text": "Вы прячетесь за деревом. Шёпот произносит ваше имя.",
-        "options": [
-          {
-            "text": "Отозваться",
-            "targetNode": "node25"
-          },
-          {
-            "text": "Молчать",
-            "targetNode": "node26"
-          }
-        ]
-      },
-      {
-        "id": "node19",
-        "text": "«Каждый выбор имеет последствия». Ветер срывает капюшон — под ним пустота.",
-        "options": [
-          {
-            "text": "Закрыть глаза",
-            "targetNode": "node27"
-          }
-        ]
-      },
-      {
-        "id": "node20",
-        "text": "Темнота сгущается. Вы натыкаетесь на дерево с вырезанным знаком: π.",
-        "options": [
-          {
-            "text": "Прикоснуться к знаку",
-            "targetNode": "node28",
-            "conditions": [{"flagName": "coordinatesSaved", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node21",
-        "text": "«Потому что это не твоя реальность». Земля под ногами начинает двигаться.",
-        "options": [
-          {
-            "text": "Копать",
-            "targetNode": "node9"
-          }
-        ]
-      },
-      {
-        "id": "node22",
-        "text": "В пепле светится схема: лабиринт под поляной. В центре — ваше имя.",
-        "options": [
-          {
-            "text": "Запомнить схему",
-            "targetNode": "node28",
-            "flagOperations": [{"flagName": "mapLearned", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node23",
-        "text": "Пальцы хватают вашу руку. Глаза открываются на ладони.",
-        "options": [
-          {
-            "text": "Вырваться",
-            "targetNode": "node16"
-          }
-        ]
-      },
-      {
-        "id": "node24",
-        "text": "Следы ведут к яме. Внутри — ваша куртка с датой рождения на бирке.",
-        "options": [
-          {
-            "text": "Спуститься",
-            "targetNode": "node29"
-          }
-        ]
-      },
-      {
-        "id": "node25",
-        "text": "Шёпот приближается: «Ты выбрал неправильный путь».",
-        "options": [
-          {
-            "text": "Бежать",
-            "targetNode": "node16"
-          }
-        ]
-      },
-      {
-        "id": "node26",
-        "text": "Тишина. Вы замечаете, что костёр больше не даёт тепла.",
-        "options": [
-          {
-            "text": "Проверить огонь",
-            "targetNode": "node30"
-          }
-        ]
-      },
-      {
-        "id": "node27",
-        "text": "Открываете глаза. Вы сидите у костра. Всё как в начале, но пламя теперь нормальное.",
-        "options": [
-          {
-            "text": "Начать заново",
-            "targetNode": "node1",
-            "flagOperations": [{"flagName": "reset", "newState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node28",
-        "text": "Старая хижина. Дверь скрипит. На столе - медальон с вашей фотографией: «Не забывай».",
-        "options": [
-          {
-            "text": "Взять медальон",
-            "targetNode": "node35",
-            "flagOperations": [{"flagName": "hasMedallion", "newState": true}]
-          },
-          {
-            "text": "Выйти",
-            "targetNode": "node29",
-            "conditions": [{"flagName": "coordinatesSaved", "requiredState": true}]
-          }
-        ]
-      },
-      {
-        "id": "node29",
-        "text": "Вы выходите из хижины. На поляне теперь каменный круг с символами.",
-        "options": [
-          {
-            "text": "Исследовать",
-            "targetNode": "node31"
-          }
-        ]
-      },
-      {
-        "id": "node30",
-        "text": "Пламя обретает форму человеческого лица. Оно шепчет: «Время вышло».",
-        "options": [
-          {
-            "text": "Потушить костёр",
-            "targetNode": "node32"
-          }
-        ]
-      },
-      {
-        "id": "node31",
-        "text": "Символы совпадают с вашими татуировками. Земля дрожит.",
-        "options": [
-          {
-            "text": "Встать в центр",
-            "targetNode": "node33"
-          }
-        ]
-      },
-      {
-        "id": "node32",
-        "text": "Тьма поглощает всё. Вы слышите тиканье своих часов.",
-        "options": []
-      },
-      {
-        "id": "node33",
-        "text": "Яркая вспышка! Вы оказываетесь в своей постели. На столе — медальон.",
-        "options": []
-      },
-      {
-        "id": "node35",
-        "text": "В медальоне фото человека, похожего на вас. Дата: 2030 год.",
-        "options": []
-      }
-    ]
-  }
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Потухший костер, уже холодный, видимо здесь никого нет уже несколько часов",
+      "options": [
+        {
+          "text": "Покопаться в костре",
+          "targetNode": "node2",
+          "flagOperations": 
+          [
+            {"flagName": "checkedCampfire", "newState": true},
+            {"flagName": "Camp", "newState": true}
+          ]
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [
+            {"flagName": "checkCampfireSurrounding", "newState": true},
+            {"flagName": "Camp", "newState": true}
+          ]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit",
+          "flagOperations": [{"flagName": "Camp", "newState": true}]
+          
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "В самом костре ничего не осталсь кроме углей",
+      "options": [
+        {
+          "text": "Раздвинуть камни",
+          "targetNode": "node4",
+          "conditions": [{"flagName": "underStone", "requiredState": true}]
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Под камнями тоже ничего нет, но один выглядит как-то странно",
+      "options": [
+        {
+          "text": "Осмотреть камень",
+          "targetNode": "node5"
+        },
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "На той стороне, которой камень лежал на земле есть какие-то отметины",
+      "options": [
+        {
+          "text": "Рассомтреть подробнее",
+          "targetNode": "node6"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Пригледевшись, ты понимаешь, что это какая-то руна: ᚨ",
+      "options": [
+        {
+          "text": "Осмотреть другие камни",
+          "targetNode": "node7"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "На других камнях тоже есть руны, в итоге получается ᚨᚾᚨᛋᚢᚨᛞᚨᚦ",
+      "options": [
+        {
+          "text": "Пропробовать прочитать",
+          "flagOperations": [{"flagName": "knowSymbols", "newState": true}],
+          "targetNode": "node8"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node8",
+      "text": "Хотя ты никогда до этого не видел эти руны, ты подсознательно расставляешь их в другом порядке: ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ, а в гололве звучит: Адаха Суна",
+      "options": [
+        {
+          "text": "Произнести вслух",
+          "flagOperations": [{"flagName": "symbols1", "newState": true}],
+          "targetNode": "node10"
+        },
+        {
+          "text": "Не рисковать",
+          "targetNode": "node9"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node9",
+      "text": "Не сразу, но у тебя получилось заглушить голос в голове",
+      "options": [
+
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node10",
+      "text": "Сказав \"ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ\", голос затихает, и как-то на душе легче становится",
+      "options": [
+        {
+          "text": "Осмотреть окружение",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkCampfireSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkCampfireSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Рядом с костром стоят камни, на которых повидимому сидели, а также немного мусора около них",
+      "options": [
+        {
+          "text": "Покопаться в костре",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedCampfire", "newState": true}],
+          "conditions": [{"flagName": "checkedCampfire", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}

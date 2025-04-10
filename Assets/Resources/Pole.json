@@ -1,0 +1,131 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Вроде самый обычный столб, только что-то вырезано на нем",
+      "options": [
+        {
+          "text": "Осмотреть символы",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}]
+        },
+        {
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "\"С + К\", странно, имя того, кого ты ищешь ни с С, ни с К не начинается",
+      "options": [
+        {
+          "text": "Осмотреть провод",
+          "targetNode": "node4",
+          "flagOperations": [{"flagName": "checkedWiresPole", "newState": true}],
+          "conditions": [{"flagName": "checkedWiresPole", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Провода выглядят старыми, видимо из-за этого и порвались",
+      "options": [
+        {
+          "text": "Оглядеться",
+          "targetNode": "node5"
+        },
+        {
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "Не похоже, чтобы кто-то планировал их чинить, да и вообще, по информации, здесь никто не живет уже лет 100",
+      "options": [
+        {
+          "text": "Осмотреть отметины",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "checkedMarksPole", "newState": true}],
+          "conditions": [{"flagName": "checkedMarksPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Они хоть и сильно напоминают следы когтей, но если присомтреться, то видно, что они сделаны простым ножом",
+      "options": [
+        {
+          "text": "Осмотреть символы",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}],
+          "conditions": [{"flagName": "checkedSymbolsPole", "requiredState": false}]
+        },
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "targetNode": "node6",
+          "flagOperations": [{"flagName": "symbols2", "newState": true}],
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "Неизвестно откуда появившееся желание произнести, ранее увиденные руны, тут же пропадает, а на душе становиться спокойнее",
+      "options": [
+        {
+          "text": "Осмотреть символы",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSymbolsPole", "newState": true}],
+          "conditions": [{"flagName": "checkedSymbolsPole", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}

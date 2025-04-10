@@ -1,0 +1,59 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Перед тобой стоит нечто. А на фото пусто... Через секунду в твоей голове звучит голос: \"ᚷᛁᚢᛖ×ᛗᛖ×ᛁᛟᚢᚱ×ᛊᛟᚢᛚ\"",
+      "options": [
+        {
+          "text": "?",
+          "sound": "demon",
+          "targetNode": "node2",
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "...",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "голос в голове: \"ᛁ×ᛊᚨᚹ×ᚨᛚᛚ\"",
+      "options": [
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit2",
+          "flagOperations": [{"flagName": "soulSold", "newState": true}],
+          "conditions": 
+          [
+            {"flagName": "symbols1", "requiredState": true},
+            {"flagName": "symbols2", "requiredState": true},
+            {"flagName": "symbols3", "requiredState": true},
+            {"flagName": "symbols4", "requiredState": true},
+            {"flagName": "symbols5", "requiredState": true}
+          ]
+        },
+        {
+          "text": "Очистить разум",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Ты моргаешь, после чего все пропадает, а ты оказываешься в деревне"
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Закрыв глаза, ты пытаешься заглушить голос в голове, после того, как голос пропадает, ты открыв глаза видишь перед собой деревню"
+    },
+    {
+      "id": "nodeExit2",
+      "text": "голос в голове: \"ᚦᚨᚾᚲ×ᛁᛟᚢ\", после чего нечто пропадает, а ты оказываешься в какой-то мрачной деревне"
+    }
+  ]
+}

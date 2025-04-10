@@ -12,17 +12,77 @@ EditorBuildSettings:
     path: Assets/Scenes/Else/MainMenu.unity
     guid: ed8d6f337e72cc24ca307101d7cc8f85
   - enabled: 1
+    path: Assets/Scenes/Else/Lor.unity
+    guid: 84cbe553b9f4f2e4e88781689c88de03
+  - enabled: 1
     path: Assets/Scenes/Locations/Field.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/Dialogues/Campfire.unity
+    path: Assets/Scenes/Dialogues/Field/Campfire.unity
     guid: cc0479d383efd834081c29683292af1b
   - enabled: 1
-    path: Assets/Scenes/Dialogues/Desk.unity
+    path: Assets/Scenes/Dialogues/Field/Desk.unity
     guid: 7c828360a778c4a469d01835e6fd1fdb
   - enabled: 1
-    path: Assets/Scenes/Dialogues/Bell.unity
+    path: Assets/Scenes/Dialogues/Field/Bell.unity
     guid: ee8abdcb4aa8e0740a09a06fdcaf5f92
+  - enabled: 1
+    path: Assets/Scenes/Locations/Rail.unity
+    guid: 88050208811c10245bae6ade042adb03
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Rail/PoezdText.unity
+    guid: c8ab4e598574ce842bfb510a04fe32c3
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Rail/Mail.unity
+    guid: 6c5c2d6b3aa44024384c8aba12ab9296
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Rail/Pole.unity
+    guid: 44faadd1d1c011c479b88ddbc1fe819d
+  - enabled: 1
+    path: Assets/Scenes/Locations/Forest.unity
+    guid: 412a140e055e6ec479c05a78e8c3984e
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Forest/Tent.unity
+    guid: a3810b68c5d892b4a9c17fbe9a8e1456
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Forest/Hanging.unity
+    guid: ddc956d931eeadb4aab8d00844e43955
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Forest/Marks.unity
+    guid: a9b8ebffe87cae440aaf98604ac9ad6c
+  - enabled: 1
+    path: Assets/Scenes/Locations/DarkForest.unity
+    guid: f78a8e287cd684b4fbfdc17abb3ba59b
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/DarkForest/DarkBell.unity
+    guid: 13de188b1f011cd4b8d361bd80a27c92
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/DarkForest/Leg.unity
+    guid: b567e80b40072b846b37334cbb909eea
+  - enabled: 1
+    path: Assets/Scenes/Locations/Cave.unity
+    guid: 418db78241f4393499bf857007ba71a4
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Cave/Demon.unity
+    guid: b5d1c9cd684ffe0488833524de14d55c
+  - enabled: 1
+    path: Assets/Scenes/Locations/Village.unity
+    guid: 090cb96ef700baa48b020109db8bc61e
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Village/Stone.unity
+    guid: 81f8aa3c78d2d744a836f5b3d5baa6b8
+  - enabled: 1
+    path: Assets/Scenes/Dialogues/Village/Person.unity
+    guid: c830db27012ec0f42bb159d77c23437c
+  - enabled: 1
+    path: Assets/Scenes/Else/End/Stone_End.unity
+    guid: 749cd529f4017604093e4d309a7b7d4e
+  - enabled: 1
+    path: Assets/Scenes/Else/End/House_end.unity
+    guid: 42d1e50addf89fa428d2d3aef1c85083
+  - enabled: 1
+    path: Assets/Scenes/Else/End/Shadow_End.unity
+    guid: 60635a7e72f33fc4e993da50e4fb098d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

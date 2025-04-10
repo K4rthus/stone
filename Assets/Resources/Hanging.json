@@ -1,0 +1,154 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "...Что... \n...Откуда... \n...Почему...",
+      "options": [
+        {
+          "text": "Осмотреть ее",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedRope", "newState": true}]
+        },
+        {
+          "text": "Попробовать снять",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "tryedTakeRope", "newState": true}]
+        },
+        {
+          "text": "Осмотреться",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkedRopeSurrounding", "newState": true}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "Хоть это и странно, но на вид обычная веревка",
+      "options": [
+        {
+          "text": "Попробовать снять",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "tryedTakeRope", "newState": true}],
+          "conditions": [{"flagName": "tryedTakeRope", "requiredState": false}]
+        },
+        {
+          "text": "Осмотреться",
+          "targetNode": "node5",
+          "flagOperations": [{"flagName": "checkedRopeSurrounding", "newState": true}],
+          "conditions": [{"flagName": "checkedRopeSurrounding", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node3",
+      "text": "Ты залезаешь на дерево, дергаешь веревку, но она ни на миллиметр не сдвигается с ветки",
+      "options": [
+        {
+          "text": "ᚨᛞᚨᚦᚨ×ᛋᚢᚾᚨ",
+          "targetNode": "node6",
+          "flagOperations": [{"flagName": "symbols5", "newState": true}],
+          "conditions": [{"flagName": "knowSymbols", "requiredState": true}]
+        },
+        {
+          "text": "Слезть",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node4",
+      "text": "Сколько бы раз ты ни перепроверял все, в палатке лишь мешки, но почему их не забрали?..",
+      "options": [
+        {
+          "text": "Осмотреть их",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSleepingBags", "newState": true}],
+          "conditions": [{"flagName": "checkedSleepingBags", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node5",
+      "text": "Вокруг нет никаких следов, ничего, просто веревка на дереве",
+      "options": [
+        {
+          "text": "Осмотреть ее",
+          "targetNode": "node2",
+          "flagOperations": [{"flagName": "checkedSleepingBags", "newState": true}],
+          "conditions": [{"flagName": "checkedSleepingBags", "requiredState": false}]
+        },
+        {
+          "text": "Попробовать снять",
+          "targetNode": "node3",
+          "flagOperations": [{"flagName": "tryedTakeRope", "newState": true}],
+          "conditions": [{"flagName": "tryedTakeRope", "requiredState": false}]
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node6",
+      "text": "После этой фразы веревка не то, что ослабевает, она сама падает на землю, хотя секунду назад была будто приклеена",
+      "options": [
+        {
+          "text": "Осмотреть ее",
+          "targetNode": "node7"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "node7",
+      "text": "на ощупь, на вид, даже на запах, это реально обычная веревка, но что это вообще было",
+      "options": [
+        {
+          "text": "Положить в рюкзак",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit2"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Убрав фотографию в рюкзак, ты отходишь"
+    },
+    {
+      "id": "nodeExit2",
+      "text": "Веревка без проблем помещается в рюкзак, после чего ты отходишь от теперь уже обычного дерева"
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Спустившись с дерева, не зная, что еще делать, ты просто кладешь фото в рюкзак и отходишь"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "startNode": "node1",
+  "nodes": [
+    {
+      "id": "node1",
+      "text": "Вместо круглого камня, на фото ",
+      "options": [
+        {
+          "text": "Коснуться",
+          "targetNode": "node2"
+        },
+        {
+          "text": "Уйти",
+          "activateReturnButton": true,
+          "targetNode": "nodeExit1"
+        }
+      ]
+    },
+    {
+      "id": "node2",
+      "text": "При касании ничего не происходит — ты просто коснулся камня",
+      "options": [
+        {
+          "text": "Отпустить его",
+          "sound": "stone",
+          "activateSceneTransition": true,
+          "targetNode": "nodeExit"
+        }
+      ]
+    },
+    {
+      "id": "nodeExit",
+      "text": "Отпустив его, ты теряешь контроль над своим телом..."
+    },
+    {
+      "id": "nodeExit1",
+      "text": "Положив фотографию в рюкзак, ты отходишь"
+    }
+  ]
+}
