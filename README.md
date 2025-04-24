@@ -50,4 +50,5 @@ stone/
 ├── ProjectSettings/  # Настройки проекта Unity: графики, физики, слоёв, ввода.
 ├── .gitattributes/   # Конфигурация Git для обработки файлов.
 ├── .gitignore/       # Список файлов/папок, игнорируемых Git.
-└── .vsconfig/        # Конфигурация для интеграции с Visual Studio.
+├── .vsconfig/        # Конфигурация для интеграции с Visual Studio.
+└── README.md         # сам readme файл.
